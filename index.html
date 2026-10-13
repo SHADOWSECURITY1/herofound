@@ -117,17 +117,13 @@
       padding: 48px; display: flex; justify-content: center; flex-wrap: wrap;
     }
 
-    .foundation-stat { text-align: center; flex: 1; min-width: 160px; padding: 0 32px; border-right: 1px solid var(--fund-border); }
+    .foundation-stat { text-align: center; flex: 1; min-width: 160px; padding: 0 32px; border-right: 1px solid var(--fund-border); display: flex; align-items: center; justify-content: center; }
     .foundation-stat:last-child { border-right: none; }
 
-    .foundation-stat-num {
+    .foundation-stat-title {
       font-family: 'Oswald', sans-serif; font-weight: 700;
-      font-size: 52px; line-height: 1; color: var(--gold); margin-bottom: 6px;
-    }
-
-    .foundation-stat-label {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 400;
-      font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--fog);
+      font-size: clamp(28px, 3.2vw, 44px); line-height: 1.05;
+      text-transform: uppercase; letter-spacing: 1px; color: var(--gold);
     }
 
     .f-section { padding: 100px 48px; position: relative; overflow: hidden; }
@@ -229,9 +225,9 @@
       padding: 36px 28px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),
-                  opacity 0.6s ease,
-                  box-shadow 0.6s ease;
+      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+                  opacity 0.9s ease,
+                  box-shadow 0.9s ease;
       will-change: transform, opacity;
       overflow: hidden;
     }
@@ -549,20 +545,16 @@
   <!-- STATS -->
   <div class="foundation-stats">
     <div class="foundation-stat reveal">
-      <div class="foundation-stat-num">500<span style="font-size:28px;">+</span></div>
-      <div class="foundation-stat-label">Heroes Supported</div>
+      <div class="foundation-stat-title">Heroes Supported</div>
     </div>
     <div class="foundation-stat reveal reveal-delay-1">
-      <div class="foundation-stat-num">12</div>
-      <div class="foundation-stat-label">Community Partners</div>
+      <div class="foundation-stat-title">Community Partners</div>
     </div>
     <div class="foundation-stat reveal reveal-delay-2">
-      <div class="foundation-stat-num">100<span style="font-size:28px;">%</span></div>
-      <div class="foundation-stat-label">Mission Driven</div>
+      <div class="foundation-stat-title">Mission Driven</div>
     </div>
     <div class="foundation-stat reveal reveal-delay-3">
-      <div class="foundation-stat-num">4</div>
-      <div class="foundation-stat-label">Core Programs</div>
+      <div class="foundation-stat-title">Core Programs</div>
     </div>
   </div>
 
@@ -571,7 +563,7 @@
     <div class="f-wrap">
       <div class="f-tag reveal">Our Mission</div>
       <h2 class="reveal reveal-delay-1">HELP EVERYONE<br><em>REMAIN OPERATIONAL</em><sup style="font-size:18px; color:var(--fog);">®</sup></h2>
-      <p class="reveal reveal-delay-2">The HERO Foundation is a Nevada nonprofit organization established to honor and support <strong>veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters</strong> through water-based healing, education, and vocational training. The Foundation promotes the restorative power of scuba diving, free diving, and aquatic environments to improve mental health, resilience, and operational readiness.</p>
+      <p class="reveal reveal-delay-2">The HERO Foundation is a Nevada nonprofit organization established to honor and support <strong>veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters</strong> through water-based healing, education, and vocational training. The Foundation promotes the restorative power of scuba diving and aquatic environments to improve mental health, resilience, and operational readiness.</p>
       <p class="reveal reveal-delay-3">Through structured training, scholarships, and outreach opportunities, the HERO Foundation helps participants develop leadership skills, career pathways, and renewed purpose through the healing properties of water.</p>
 
       <div class="pillars-grid">
@@ -649,19 +641,19 @@
     <div class="programs-content">
       <div class="f-tag reveal">Core Programs</div>
       <h2 class="reveal reveal-delay-1">WHERE YOUR<br><em>SUPPORT GOES</em></h2>
-      <p class="reveal reveal-delay-2" style="max-width:680px;">Every program is built around the healing power of water — from therapeutic dives to certified training pathways, we meet heroes where they are and help them move forward.</p>
+      <p class="reveal reveal-delay-2" style="max-width:680px;">Every program is built around the healing power of water. From therapeutic dives to certified training pathways, we meet heroes where they are and help them move forward.</p>
 
       <div class="coverflow-stage" id="cfStage">
         <div class="cf-track" id="cfTrack">
           <div class="cf-card" data-index="0">
             <span class="program-icon">🤿</span>
             <h3>Therapeutic Dive Sessions</h3>
-            <p>Therapeutic scuba and freediving sessions designed to improve mental health, reduce stress, and restore resilience for veterans, first responders, and service personnel.</p>
+            <p>Therapeutic scuba sessions designed to improve mental health, reduce stress, and restore resilience for veterans, first responders, and service personnel.</p>
           </div>
           <div class="cf-card" data-index="1">
             <span class="program-icon">🌊</span>
             <h3>Peer-Support Dives</h3>
-            <p>Structured peer-support and mentorship dives that build community, trust, and connection among those who have served — because healing is better together.</p>
+            <p>Structured peer-support and mentorship dives that build community, trust, and connection among those who have served, because healing is better together.</p>
           </div>
           <div class="cf-card" data-index="2">
             <span class="program-icon">🎓</span>
@@ -671,7 +663,7 @@
           <div class="cf-card" data-index="3">
             <span class="program-icon">📚</span>
             <h3>Educational Workshops</h3>
-            <p>Workshops focused on stress recovery, ocean awareness, and personal development — providing tools that extend well beyond the water.</p>
+            <p>Workshops focused on stress recovery, ocean awareness, and personal development, providing tools that extend well beyond the water.</p>
           </div>
           <div class="cf-card" data-index="4">
             <span class="program-icon">🎖️</span>
@@ -726,7 +718,7 @@
           <div class="impact-num">04</div>
           <div>
             <h3>Community Built</h3>
-            <p>A growing network of heroes supporting heroes — peer mentors, business partners, and friends who understand the mission because they lived it.</p>
+            <p>A growing network of heroes supporting heroes: peer mentors, business partners, and friends who understand the mission because they lived it.</p>
           </div>
         </div>
       </div>
@@ -762,7 +754,7 @@
     <div class="f-wrap">
       <div class="f-tag reveal">Get Involved</div>
       <h2 class="reveal reveal-delay-1">THREE WAYS TO<br><em>JOIN THE MISSION</em></h2>
-      <p class="reveal reveal-delay-2">Whether you give, volunteer, or partner with us — every contribution directly fuels a hero's next chapter.</p>
+      <p class="reveal reveal-delay-2">Whether you give, volunteer, or partner with us, every contribution directly fuels a hero's next chapter.</p>
 
       <div class="ways-grid">
         <div class="way-card reveal">
@@ -774,7 +766,7 @@
         <div class="way-card reveal reveal-delay-1">
           <span class="way-icon">🙋</span>
           <h3>Volunteer</h3>
-          <p>Share your skills — legal, financial, marketing, mentorship — with the veterans and entrepreneurs in our programs. Time is one of the greatest gifts.</p>
+          <p>Share your legal, financial, marketing, or mentorship skills with the veterans and entrepreneurs in our programs. Time is one of the greatest gifts.</p>
           <a href="mailto:info@herofound.org" class="btn-gold" style="display:inline-block; padding:12px 32px; font-size:13px; clip-path:none; padding-right:32px;">Get Involved</a>
         </div>
         <div class="way-card reveal reveal-delay-2">
@@ -892,15 +884,19 @@
 
     function resetAuto() {
       clearInterval(autoTimer);
-      autoTimer = setInterval(next, 3200);
+      autoTimer = setInterval(next, 7000);
     }
 
     document.getElementById('cfNext').addEventListener('click', next);
     document.getElementById('cfPrev').addEventListener('click', prev);
 
+    // Pause auto-advance while the reader is hovering over the cards
+    const stage = document.getElementById('cfStage');
+    stage.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    stage.addEventListener('mouseleave', resetAuto);
+
     // Swipe support
     let touchStartX = 0;
-    const stage = document.getElementById('cfStage');
     stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     stage.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - touchStartX;
