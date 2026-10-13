@@ -5,11 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The HERO Foundation</title>
   <meta name="description" content="A Nevada nonprofit established to honor and support veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters through water-based healing, education, and vocational training.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The HERO Foundation">
+  <meta property="og:description" content="Help Everyone Remain Operational. A Nevada 501(c)(3) nonprofit supporting veterans, first responders, nurses, and teachers through water-based healing, education, and vocational training.">
+  <meta property="og:url" content="https://herofound.org/">
+  <meta property="og:image" content="https://herofound.org/hero-diver-flag-1200.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" href="hero-diver-flag.jpg" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="hero-diver-flag-1200.jpg" media="(max-width: 768px)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
 
     :root {
@@ -38,11 +47,16 @@
     .foundation-hero {
       min-height: 85vh;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 140px 48px 100px;
+      text-align: left; padding: 140px 48px 100px;
       position: relative; overflow: hidden;
-      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.10) 0%, transparent 60%),
-                  linear-gradient(180deg, #060609 0%, #0A0A0F 100%);
+      background:
+        linear-gradient(90deg, rgba(6,6,9,0.92) 0%, rgba(6,6,9,0.62) 42%, rgba(6,6,9,0.10) 100%),
+        linear-gradient(180deg, rgba(6,6,9,0.30) 0%, rgba(10,10,15,0) 55%, #0A0A0F 100%),
+        url('hero-diver-flag.jpg') center 32% / cover no-repeat #060609;
     }
+
+    .foundation-hero-inner { width: 100%; max-width: 1100px; }
+    .foundation-hero-copy { max-width: 760px; }
 
     .foundation-badge {
       display: inline-flex; align-items: center; gap: 10px;
@@ -62,7 +76,7 @@
 
     .foundation-hero h1 {
       font-family: 'Oswald', sans-serif; font-weight: 700;
-      font-size: clamp(52px, 8vw, 110px);
+      font-size: clamp(48px, 6.6vw, 92px);
       line-height: 0.9; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 28px;
     }
 
@@ -70,10 +84,10 @@
 
     .foundation-hero-sub {
       font-weight: 300; font-size: 20px; line-height: 1.7;
-      color: var(--fog); max-width: 640px; margin: 0 auto 48px;
+      color: var(--fog); max-width: 640px; margin: 0 0 48px;
     }
 
-    .foundation-hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .foundation-hero-actions { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
 
     .btn-gold {
       display: inline-block; padding: 16px 48px;
@@ -129,15 +143,15 @@
 
     .f-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
 
-    .f-section h2 {
+    .f-section h2, .programs-section h2 {
       font-family: 'Oswald', sans-serif; font-weight: 700;
       font-size: clamp(36px, 5vw, 68px); line-height: 0.95;
       text-transform: uppercase; letter-spacing: -1px; margin-bottom: 24px;
     }
 
-    .f-section h2 em { font-style: normal; color: var(--gold); }
+    .f-section h2 em, .programs-section h2 em { font-style: normal; color: var(--gold); }
 
-    .f-section p {
+    .f-section p, .programs-content > p {
       font-weight: 300; font-size: 18px; line-height: 1.8;
       color: var(--fog); max-width: 680px; margin-bottom: 20px;
     }
@@ -336,6 +350,144 @@
 
     .foundation-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
+    /* ── ORIGIN STORY ── */
+    .origin-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) 400px;
+      gap: 72px; align-items: start; margin-top: 48px;
+    }
+    .origin-story { order: 1; }
+    .origin-story p { max-width: 640px; }
+    .origin-lead { font-size: 22px; line-height: 1.6; color: var(--white); }
+    .origin-story .origin-lead strong { font-weight: 500; }
+    .origin-story .origin-turn { color: var(--white); font-weight: 400; }
+    .origin-callout { border-left: 2px solid var(--gold); padding: 6px 0 6px 24px; margin: 36px 0; }
+    .origin-callout p { margin: 0; color: var(--white); font-size: 20px; line-height: 1.6; }
+    .origin-callout p em { color: var(--gold); font-style: normal; font-weight: 500; }
+    .origin-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+    .origin-photos { order: 2; position: sticky; top: 32px; display: grid; gap: 20px; }
+    .origin-photo {
+      margin: 0; background: var(--fund-card); border: 1px solid var(--fund-border);
+      padding: 10px; transition: border-color 0.3s ease;
+    }
+    .origin-photo:hover { border-color: var(--gold); }
+    .origin-photo img { display: block; width: 100%; height: auto; }
+    .origin-photo figcaption {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--fog); padding: 14px 4px 4px; line-height: 1.5;
+    }
+    .origin-photo figcaption strong { color: var(--gold); font-weight: 500; }
+
+    /* ── DONATE ── */
+    .donate-section {
+      background:
+        radial-gradient(ellipse at 82% 50%, rgba(212,168,67,0.12) 0%, transparent 55%),
+        var(--fund-dark);
+      border-top: 1px solid var(--fund-border); border-bottom: 1px solid var(--fund-border);
+    }
+    .donate-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+    .donate-copy p { max-width: 560px; }
+    .donate-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+    .donate-alt { font-size: 15px; margin: 24px 0 0; }
+    .donate-alt a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(212,168,67,0.35); }
+    .donate-alt a:hover { color: var(--white); border-color: var(--white); }
+    .donate-qr-card {
+      justify-self: end; width: 100%; max-width: 360px;
+      background: var(--fund-card); border: 1px solid var(--fund-border);
+      padding: 28px; text-align: center; box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+      transition: border-color 0.3s ease;
+    }
+    .donate-qr-card:hover { border-color: var(--gold); }
+    .donate-qr-card a { display: block; text-decoration: none; color: inherit; }
+    .donate-qr-frame { background: #fff; padding: 14px; margin: 0 auto 18px; width: 100%; max-width: 260px; border-radius: 4px; }
+    .donate-qr-frame img { display: block; width: 100%; height: auto; }
+    .donate-qr-label {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 6px;
+    }
+    .donate-qr-sub {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--fog); margin: 0; line-height: 1.6;
+    }
+
+    /* ── FLOATING DONATE PILL ── */
+    .donate-fab {
+      position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      z-index: 900; display: flex; align-items: center; gap: 8px;
+      opacity: 0; transform: translateY(16px); pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .donate-fab.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .donate-fab-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #0A0A0F; text-decoration: none;
+      font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 12px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 12px 18px; border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,67,0.4);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .donate-fab-link:hover { background: #e8ba50; color: #0A0A0F; transform: translateY(-2px); }
+    .donate-fab-link svg { width: 14px; height: 14px; }
+    .donate-fab-qr { position: relative; }
+    .donate-fab-qr-btn {
+      width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
+      background: rgba(20,20,32,0.92); color: var(--gold);
+      border: 1px solid rgba(212,168,67,0.4);
+      display: inline-flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s ease; box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+    }
+    .donate-fab-qr-btn:hover, .donate-fab-qr-btn[aria-expanded="true"] { border-color: var(--gold); background: rgba(212,168,67,0.14); }
+    .donate-fab-qr-btn svg { width: 18px; height: 18px; }
+    .donate-pop {
+      position: absolute; right: 0; bottom: calc(100% + 12px);
+      width: 220px; background: var(--fund-card); border: 1px solid var(--fund-border);
+      padding: 16px; text-align: center; box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+    }
+    .donate-pop .donate-qr-frame { padding: 10px; margin-bottom: 12px; }
+    .donate-pop p {
+      margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--fog); line-height: 1.5;
+    }
+    .donate-pop p strong { color: var(--white); font-weight: 500; display: block; font-size: 13px; }
+    .donate-fab-link:focus-visible, .donate-fab-qr-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+    /* ── FOOTER ── */
+    .foundation-footer {
+      border-top: 1px solid var(--fund-border); background: var(--fund-deep);
+      padding: 40px 48px;
+    }
+    .footer-wrap {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--white);
+    }
+    .footer-brand span {
+      display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 400;
+      font-size: 12px; letter-spacing: 2px; color: var(--fog); margin-top: 6px;
+    }
+    .footer-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .footer-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--fog); text-decoration: none;
+      border: 1px solid var(--fund-border); padding: 10px 16px; transition: all 0.3s ease;
+    }
+    .footer-link:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-glow); }
+    .footer-link svg { width: 16px; height: 16px; fill: currentColor; }
+    .footer-copy {
+      max-width: 1100px; margin: 24px auto 0; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 1.5px; color: rgba(138,155,181,0.6);
+    }
+
+    @media (max-width: 1024px) {
+      .origin-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; }
+      .donate-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; }
+    }
+
     /* Reveal animations */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -355,6 +507,23 @@
       .coverflow-stage { height: 420px; }
       .cf-card { width: 260px; margin-left: -130px; }
       .impact-grid { grid-template-columns: 1fr; }
+      .foundation-hero {
+        text-align: center;
+        background:
+          linear-gradient(180deg, rgba(6,6,9,0.66) 0%, rgba(6,6,9,0.52) 50%, #0A0A0F 100%),
+          url('hero-diver-flag-1200.jpg') 72% 30% / cover no-repeat #060609;
+      }
+      .foundation-hero-copy { max-width: none; }
+      .foundation-hero-sub { margin: 0 auto 40px; }
+      .foundation-hero-actions { justify-content: center; }
+      .origin-grid { grid-template-columns: 1fr; gap: 40px; }
+      .origin-photos { order: 0; position: static; }
+      .donate-grid { grid-template-columns: 1fr; gap: 40px; }
+      .donate-qr-card { justify-self: stretch; max-width: none; }
+      .donate-fab { right: 16px; }
+      .donate-fab-qr { display: none; }
+      .foundation-footer { padding: 32px 24px; }
+      .footer-wrap { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -364,13 +533,15 @@
 
   <!-- HERO -->
   <section class="foundation-hero">
-    <div>
+    <div class="foundation-hero-inner">
+      <div class="foundation-hero-copy">
       <div class="foundation-badge reveal">501(c)(3) Non-Profit Organization</div>
       <h1 class="reveal reveal-delay-1">BUILT FOR<br><em>THOSE WHO SERVED.</em></h1>
       <p class="foundation-hero-sub reveal reveal-delay-2">A Nevada nonprofit established to honor and support veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters through water-based healing, education, and vocational training.</p>
       <div class="foundation-hero-actions reveal reveal-delay-3">
-        <a href="#contact" class="btn-gold">Donate Now</a>
+        <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
         <a href="#programs" class="btn-fund-ghost">See Our Programs</a>
+      </div>
       </div>
     </div>
   </section>
@@ -423,6 +594,50 @@
           <div class="f-pillar-letter">O</div>
           <div class="f-pillar-word">Operational</div>
           <p class="f-pillar-desc">Resources and pathways to keep heroes moving forward</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN STORY -->
+  <section class="f-section deep" id="origin">
+    <div class="f-wrap">
+      <div class="f-tag reveal">Our Origin Story</div>
+      <h2 class="reveal reveal-delay-1">IT STARTED WITH<br><em>A SINGLE DIVE.</em></h2>
+
+      <div class="origin-grid">
+        <div class="origin-photos">
+          <figure class="origin-photo reveal">
+            <img src="origin-recovery.jpg" alt="Two divers on a boat, one holding up a recovered anchor chain and the other giving a shaka sign" loading="lazy" width="1179" height="867">
+            <figcaption><strong>On the water.</strong> What began as a stop at a dive shop became a regular part of life.</figcaption>
+          </figure>
+          <figure class="origin-photo reveal reveal-delay-1">
+            <img src="origin-dive-100.jpg" alt="Two divers on a boat at Lake Mead holding homemade sourdough Pop-Tarts to celebrate a 100th dive" loading="lazy" width="709" height="532">
+            <figcaption><strong>Dive 100.</strong> Lake Mead, March 2025. Homemade sourdough Pop-Tarts included.</figcaption>
+          </figure>
+        </div>
+
+        <div class="origin-story">
+          <p class="origin-lead reveal">HERO Foundation began with a simple belief: <strong>healing happens when people find connection, purpose, and a reason to keep moving forward.</strong> For Zach, that healing began in an unexpected place: a dive shop.</p>
+          <p class="reveal">Zach is a Marine Corps veteran and now a member of our board. But before HERO Foundation had a name, Zach had reached a point where the frustration was heavy, and he knew something had to change.</p>
+          <p class="reveal">At the time, Zach was facing mental health challenges and looking for a new path forward. One day, carrying that frustration and unsure where to turn, he was driving around when he spotted 3rd Reef Divers. Something about that moment made him stop and walk inside.</p>
+          <p class="reveal">There, he met Larry, who told him about the NAUI GI Bill program for veterans. After stopping in the shop and meeting Larry, Zach was in the classroom the very next evening, beginning an Open Water class with one of HERO’s founders, who had recently become a NAUI instructor.</p>
+          <p class="reveal">During the first pool session, Zach was quiet and didn’t say much. But as the course continued, small conversations began during breaks and before and after class. When Zach learned he was training with a fellow veteran, trust began to grow. Those conversations became the start of a friendship.</p>
+          <p class="reveal">Zach completed his Open Water certification, continued his training, and kept showing up to dive. In less than a year, he and his instructor had logged more than 100 dives together.</p>
+          <p class="reveal">For his 100th dive, Taysia, CEO of 3rd Reef Divers, joined them. It was more than a milestone. It was a celebration of progress, friendship, and the power of finding a community that helps you keep going. And yes, there were homemade sourdough Pop-Tarts.</p>
+          <p class="reveal">Zach has shared that diving helped him through a time when frustration felt heavy and he was searching for a way forward. What began as a stop at a dive shop became a regular part of his life, giving him new challenges, lasting friendships, and a community to belong to.</p>
+          <p class="reveal">Today, Zach is a divemaster working professionally in diving, and the impact has reached beyond him. HERO Foundation’s work is rooted in moments like this: one person finding purpose, then helping others discover it too.</p>
+          <p class="reveal">That experience also revealed something important. As veterans, first responders, and public servants, we often think service only means helping someone else. But through diving with Zach and others, we saw that connection, challenge, and shared purpose were helping us as well.</p>
+          <p class="origin-turn reveal">That realization helped inspire HERO Foundation.</p>
+          <div class="origin-callout reveal">
+            <p>HERO stands for <em>Help Everyone Remain Operational.</em> Through scuba diving, water-based wellness, and community, we help veterans, first responders, nurses, teachers, and others who serve find connection, confidence, and renewed purpose.</p>
+          </div>
+          <p class="reveal">Zach’s story is part of our beginning, but it is also a reminder of why we continue. Sometimes the path forward starts with a single step, a single conversation, or a single dive.</p>
+          <p class="reveal">If you believe in helping those who serve stay connected, supported, and operational, we invite you to be part of the HERO mission.</p>
+          <div class="origin-actions reveal">
+            <a href="#donate" class="btn-gold">Join the Mission</a>
+            <a href="#contact" class="btn-fund-ghost">Get Involved</a>
+          </div>
         </div>
       </div>
     </div>
@@ -518,6 +733,30 @@
     </div>
   </section>
 
+  <!-- DONATE -->
+  <section class="f-section donate-section" id="donate">
+    <div class="f-wrap">
+      <div class="donate-grid">
+        <div class="donate-copy">
+          <div class="f-tag reveal">Donate</div>
+          <h2 class="reveal reveal-delay-1">FUEL THE<br><em>NEXT DIVE.</em></h2>
+          <p class="reveal reveal-delay-2">Every gift puts a veteran, first responder, nurse, or teacher in the water: certifications, therapeutic dives, scholarships, and a community that keeps them moving forward.</p>
+          <div class="donate-actions reveal reveal-delay-3">
+            <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
+          </div>
+          <p class="donate-alt reveal reveal-delay-3">Prefer to give another way? Email <a href="mailto:info@herofound.org">info@herofound.org</a> and we will get right back to you.</p>
+        </div>
+        <div class="donate-qr-card reveal reveal-delay-2">
+          <a href="https://link.clover.com/urlshortener/wZVcKj" target="_blank" rel="noopener" aria-label="Open the HERO Foundation donation page">
+            <div class="donate-qr-frame"><img src="donate-qr.png" alt="QR code linking to the HERO Foundation donation page" width="592" height="592"></div>
+            <div class="donate-qr-label">Scan to Donate</div>
+            <p class="donate-qr-sub">HERO Foundation Donation<br>Secure checkout via Clover</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- HOW TO HELP -->
   <section class="f-section deep" id="contact">
     <div class="f-wrap">
@@ -530,7 +769,7 @@
           <span class="way-icon">💛</span>
           <h3>Donate</h3>
           <p>100% of your donation funds our programs. No excessive overhead, no bureaucracy. Your dollars go directly to heroes who need them.</p>
-          <a href="mailto:info@herofound.org" class="btn-gold" style="display:inline-block; padding:12px 32px; font-size:13px; clip-path:none; padding-right:32px;">Give Now</a>
+          <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" style="display:inline-block; padding:12px 32px; font-size:13px; clip-path:none; padding-right:32px;" target="_blank" rel="noopener">Give Now</a>
         </div>
         <div class="way-card reveal reveal-delay-1">
           <span class="way-icon">🙋</span>
@@ -554,11 +793,36 @@
     <h2 class="reveal reveal-delay-1">STAND WITH<br><em style="color:var(--gold);">YOUR HEROES.</em></h2>
     <p class="reveal reveal-delay-2">These men and women gave everything. Now it's our turn. Join the Hero Foundation and help us keep every hero operational.</p>
     <div class="foundation-cta-buttons reveal reveal-delay-3">
-      <a href="#contact" class="btn-gold">Donate Now</a>
-      <a href="#programs" class="btn-fund-ghost">Learn More About HERO</a>
+      <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
+      <a href="#origin" class="btn-fund-ghost">Read Our Story</a>
     </div>
   </section>
 
+  <!-- FOOTER -->
+  <footer class="foundation-footer">
+    <div class="footer-wrap">
+      <div class="footer-brand">The HERO Foundation<span>Nevada 501(c)(3) Nonprofit</span></div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/company/hero-foundation" class="footer-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Follow on LinkedIn</a>
+        <a href="mailto:info@herofound.org" class="footer-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.51l-8 5-8-5V6h16zM4 18V8.83l8 5 8-5V18H4z"/></svg>info@herofound.org</a>
+        <a href="https://link.clover.com/urlshortener/wZVcKj" class="footer-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; 2026 The HERO Foundation. Help Everyone Remain Operational&reg;</div>
+  </footer>
+
+</div>
+
+<!-- FLOATING DONATE -->
+<div class="donate-fab" id="donateFab">
+  <div class="donate-fab-qr">
+    <button type="button" class="donate-fab-qr-btn" id="donateFabQrBtn" aria-expanded="false" aria-controls="donateFabPop" aria-label="Show donation QR code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z"/></svg></button>
+    <div class="donate-pop" id="donateFabPop" hidden>
+      <div class="donate-qr-frame"><img src="donate-qr.png" alt="QR code linking to the HERO Foundation donation page" width="592" height="592"></div>
+      <p><strong>Scan to donate</strong>HERO Foundation Donation</p>
+    </div>
+  </div>
+  <a href="https://link.clover.com/urlshortener/wZVcKj" class="donate-fab-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate Now</a>
 </div>
 
 <script>
@@ -645,6 +909,37 @@
 
     layout();
     resetAuto();
+  })();
+
+  // Floating donate pill: appears after the hero, hides while the Donate section is on screen
+  (function() {
+    const fab = document.getElementById('donateFab');
+    const donateSection = document.getElementById('donate');
+    const qrBtn = document.getElementById('donateFabQrBtn');
+    const pop = document.getElementById('donateFabPop');
+    if (!fab || !donateSection) return;
+    let donateInView = false;
+
+    function closePop() { pop.hidden = true; qrBtn.setAttribute('aria-expanded', 'false'); }
+    function update() {
+      const show = window.scrollY > 420 && !donateInView;
+      fab.classList.toggle('show', show);
+      if (!show) closePop();
+    }
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { donateInView = e.isIntersecting; });
+      update();
+    }, { threshold: 0.15 }).observe(donateSection);
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    qrBtn.addEventListener('click', () => {
+      const open = pop.hidden;
+      pop.hidden = !open;
+      qrBtn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', e => { if (!fab.contains(e.target)) closePop(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePop(); });
   })();
 </script>
 
