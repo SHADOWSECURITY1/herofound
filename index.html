@@ -267,6 +267,11 @@
     }
 
     .cf-card p { font-size: 14px; line-height: 1.7; color: var(--fog); margin: 0; }
+    .cf-card.cf-donate { padding: 24px 28px; text-align: center; }
+    .cf-card.cf-donate a { display: block; text-decoration: none; color: inherit; }
+    .cf-card.cf-donate img { display: block; width: 168px; height: 168px; margin: 0 auto 14px; }
+    .cf-card.cf-donate h3 { margin-bottom: 8px; }
+    .cf-card.cf-donate p strong { color: var(--white); font-weight: 500; }
 
     /* nav dots */
     .cf-dots {
@@ -365,7 +370,7 @@
 
     /* ── ORIGIN STORY ── */
     .origin-grid {
-      display: grid; grid-template-columns: minmax(0, 1fr) 400px;
+      display: grid; grid-template-columns: minmax(0, 1fr) 380px;
       gap: 64px; align-items: start; margin-top: 32px;
     }
     .origin-story { order: 1; }
@@ -389,6 +394,23 @@
       text-transform: uppercase; color: var(--fog); padding: 14px 4px 4px; line-height: 1.5;
     }
     .origin-photo figcaption strong { color: var(--gold); font-weight: 500; }
+    .origin-qr {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--fund-card); border: 1px solid var(--fund-border);
+      padding: 12px 16px 12px 12px; text-decoration: none; color: inherit;
+      transition: border-color 0.3s ease;
+    }
+    .origin-qr:hover { border-color: var(--gold); color: inherit; }
+    .origin-qr img { display: block; width: 120px; height: 120px; flex-shrink: 0; }
+    .origin-qr-label {
+      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); margin-bottom: 6px;
+    }
+    .origin-qr-sub {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--fog); line-height: 1.5;
+    }
+    .origin-qr-sub strong { color: var(--gold); font-weight: 500; }
 
     /* ── DONATE ── */
     .donate-section {
@@ -398,31 +420,14 @@
         url('donate-bg.jpg') center 45% / cover no-repeat var(--fund-dark);
       border-top: 1px solid var(--fund-border); border-bottom: 1px solid var(--fund-border);
     }
-    .donate-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+    .donate-section { min-height: 440px; display: flex; align-items: center; }
     .donate-copy p { max-width: 560px; }
     .donate-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
     .donate-alt { font-size: 15px; margin: 24px 0 0; }
     .donate-alt a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(212,168,67,0.35); }
     .donate-alt a:hover { color: var(--white); border-color: var(--white); }
-    .donate-qr-card {
-      justify-self: end; width: 100%; max-width: 360px;
-      background: rgba(20,20,32,0.86); border: 1px solid rgba(212,168,67,0.25);
-      padding: 28px; text-align: center; box-shadow: 0 24px 64px rgba(0,0,0,0.55);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      transition: border-color 0.3s ease;
-    }
-    .donate-qr-card:hover { border-color: var(--gold); }
-    .donate-qr-card a { display: block; text-decoration: none; color: inherit; }
     .donate-qr-frame { background: var(--fund-card); padding: 0; margin: 0 auto 18px; width: 100%; max-width: 272px; }
     .donate-qr-frame img { display: block; width: 100%; height: auto; }
-    .donate-qr-label {
-      font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 6px;
-    }
-    .donate-qr-sub {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--fog); margin: 0; line-height: 1.6;
-    }
 
     /* ── FLOATING DONATE PILL ── */
     .donate-fab {
@@ -500,7 +505,6 @@
 
     @media (max-width: 1024px) {
       .origin-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; }
-      .donate-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; }
     }
 
     /* ── COMPACT SECTION (Get Involved) ── */
@@ -545,8 +549,6 @@
       .foundation-hero-actions { justify-content: center; }
       .origin-grid { grid-template-columns: 1fr; gap: 40px; }
       .origin-photos { order: 0; position: static; }
-      .donate-grid { grid-template-columns: 1fr; gap: 40px; }
-      .donate-qr-card { justify-self: stretch; max-width: none; }
       .donate-section {
         background:
           linear-gradient(180deg, rgba(10,10,15,0.80) 0%, rgba(10,10,15,0.58) 55%, rgba(10,10,15,0.86) 100%),
@@ -644,6 +646,13 @@
             <img src="origin-dive-100.jpg" alt="Two divers on a boat at Lake Mead holding homemade sourdough Pop-Tarts to celebrate a 100th dive" loading="lazy" width="709" height="532">
             <figcaption><strong>Dive 100.</strong> Lake Mead, March 2025. Homemade sourdough Pop-Tarts included.</figcaption>
           </figure>
+          <a class="origin-qr reveal reveal-delay-2" href="https://link.clover.com/urlshortener/wZVcKj" target="_blank" rel="noopener" aria-label="Open the HERO Foundation donation page">
+            <img src="donate-qr-gold.png" alt="QR code linking to the HERO Foundation donation page" width="624" height="624" loading="lazy">
+            <div>
+              <div class="origin-qr-label">Scan to Donate</div>
+              <div class="origin-qr-sub"><strong>HERO Foundation donation.</strong> Secure checkout via Clover.</div>
+            </div>
+          </a>
         </div>
 
         <div class="origin-story">
@@ -742,6 +751,13 @@
             <h3>Community Outreach</h3>
             <p>Outreach opportunities connecting heroes with a network of peers who understand the mission because they lived it.</p>
           </div>
+          <div class="cf-card cf-donate" data-index="6">
+            <a href="https://link.clover.com/urlshortener/wZVcKj" target="_blank" rel="noopener" aria-label="Open the HERO Foundation donation page">
+              <img src="donate-qr-gold.png" alt="QR code linking to the HERO Foundation donation page" width="624" height="624" loading="lazy">
+              <h3>Scan to Donate</h3>
+              <p><strong>HERO Foundation donation.</strong> Secure checkout via Clover.</p>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -797,8 +813,7 @@
   <!-- DONATE -->
   <section class="f-section donate-section" id="donate">
     <div class="f-wrap">
-      <div class="donate-grid">
-        <div class="donate-copy">
+      <div class="donate-copy">
           <div class="f-tag reveal">Donate</div>
           <h2 class="reveal reveal-delay-1">FUEL THE<br><em>NEXT DIVE.</em></h2>
           <p class="reveal reveal-delay-2">Every gift puts a veteran, first responder, nurse, or teacher in the water: certifications, therapeutic dives, scholarships, and a community that keeps them moving forward.</p>
@@ -806,14 +821,6 @@
             <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
           </div>
           <p class="donate-alt reveal reveal-delay-3">Prefer to give another way? Email <a href="mailto:info@herofound.org">info@herofound.org</a> and we will get right back to you.</p>
-        </div>
-        <div class="donate-qr-card reveal reveal-delay-2">
-          <a href="https://link.clover.com/urlshortener/wZVcKj" target="_blank" rel="noopener" aria-label="Open the HERO Foundation donation page">
-            <div class="donate-qr-frame"><img src="donate-qr-gold.png" alt="QR code linking to the HERO Foundation donation page" width="624" height="624"></div>
-            <div class="donate-qr-label">Scan to Donate</div>
-            <p class="donate-qr-sub">HERO Foundation Donation<br>Secure checkout via Clover</p>
-          </a>
-        </div>
       </div>
     </div>
   </section>
