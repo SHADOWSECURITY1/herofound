@@ -20,7 +20,7 @@ These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xm
 | `robots.txt` | Allows search engines and names each AI crawler explicitly (named groups do not inherit the wildcard group) |
 | `sitemap.xml` | One entry per real URL with `lastmod`. Anchors are not URLs |
 | `llms.txt` | Plain-text summary of the organization and pages for AI assistants |
-| `favicon.svg`, `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons, cut from the goggles in the HERO badge |
+| `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons, cut from the goggles in the HERO badge. Raster only: the kit's SVG redraws do not match the artwork |
 
 ## How to use a spec
 
