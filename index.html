@@ -591,11 +591,12 @@
       .origin-grid { grid-template-columns: 1fr; gap: 40px; }
       .origin-photos { order: 0; position: static; }
       .donate-section {
-        background: url('donate-wreck-poster.jpg') 55% center / cover no-repeat var(--fund-dark);
+        background: url('donate-wreck-poster.jpg') 41% center / cover no-repeat var(--fund-dark);
       }
-      .donate-video { width: 100%; object-position: 55% center; }
+      /* Crop so the diver swims at the right edge, beside the ragged line ends; keep the scrim light so it reads. */
+      .donate-video { width: 100%; object-position: 41% center; }
       .donate-section::before {
-        background: linear-gradient(180deg, rgba(10,10,15,0.60) 0%, rgba(10,10,15,0.46) 55%, rgba(10,10,15,0.66) 100%);
+        background: linear-gradient(180deg, rgba(10,10,15,0.18) 0%, rgba(10,10,15,0.12) 50%, rgba(10,10,15,0.58) 100%);
       }
       .donate-fab { right: 16px; }
       .donate-fab-qr { display: none; }
