@@ -447,7 +447,7 @@
     /* Gradient scrim over the video, under the copy (.f-wrap is z-index 5). */
     .donate-section::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(90deg, rgba(10,10,15,0.70) 0%, rgba(10,10,15,0.36) 38%, rgba(10,10,15,0) 66%);
+      background: linear-gradient(90deg, rgba(10,10,15,0.38) 0%, rgba(10,10,15,0.18) 38%, rgba(10,10,15,0) 66%);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -455,10 +455,6 @@
     }
     .donate-section { min-height: 440px; display: flex; align-items: center; }
     .donate-copy { position: relative; text-shadow: 0 2px 14px rgba(0,0,0,0.75); }
-    .donate-copy::before {
-      content: ''; position: absolute; inset: -56px -120px -56px -72px; z-index: -1; pointer-events: none;
-      background: radial-gradient(ellipse at 38% 50%, rgba(10,10,15,0.80) 0%, rgba(10,10,15,0.52) 42%, rgba(10,10,15,0) 72%);
-    }
     .donate-copy p { max-width: 560px; color: #c9d2df; }
     .donate-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
     .donate-alt { font-size: 15px; margin: 24px 0 0; }
@@ -596,7 +592,7 @@
       /* Crop so the diver swims at the right edge, beside the ragged line ends; keep the scrim light so it reads. */
       .donate-video { width: 100%; object-position: 41% center; }
       .donate-section::before {
-        background: linear-gradient(180deg, rgba(10,10,15,0.18) 0%, rgba(10,10,15,0.12) 50%, rgba(10,10,15,0.58) 100%);
+        background: linear-gradient(180deg, rgba(10,10,15,0.08) 0%, rgba(10,10,15,0.05) 50%, rgba(10,10,15,0.50) 100%);
       }
       .donate-fab { right: 16px; }
       .donate-fab-qr { display: none; }
