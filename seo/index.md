@@ -68,17 +68,16 @@ This file is the source of truth for how the home page should present itself to 
 
 ### Icons and manifest (added 2026-10-14 from Mike's logo kit)
 
-The full badge is unreadable at tab size, so the favicon is the badge's red goggles on a navy disc with a cream rim. Files from `HERO-Foundation-Logo-Kit/favicon/`, served from the root.
+The full badge is unreadable at tab size, so the favicon is the badge's red goggles on a navy disc with a cream rim. Files from `HERO-Foundation-Logo-Kit/favicon/`, served from the root. **Raster only:** the kit's SVGs (`favicon.svg`, `hero-foundation-logo-rim.svg`) are simplified redraws that do not match the real badge, so they are not used (Mike, 2026-10-14: "the logo is not showing properly").
 
 | File | Spec |
 |---|---|
-| `favicon.svg` | Goggles mark, vector, for modern browsers |
 | `favicon.ico` | 48x48 fallback, `sizes="any"` |
 | `favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `favicon-192.png`, `favicon-512.png` | PNG sizes; 32 and 192 are linked in `<head>`, 192 and 512 feed the manifest |
 | `apple-touch-icon.png` | 180x180, opaque |
 | `site.webmanifest` | `name` "HERO Foundation", `short_name` "HERO", `display` browser, `theme_color` and `background_color` `#0A0A0F`, 192 and 512 icons |
 
-**Logo on the page:** `hero-foundation-logo.svg` (the "rim" badge for dark backgrounds, 50 KB vector) sits above the 501(c)(3) pill in the hero, linked to `/`, and beside the wordmark in the footer. `hero-foundation-logo-512.png` is the schema `logo`.
+**Logo on the page:** the "rim" badge (for dark backgrounds) as `hero-foundation-logo-512.webp` (52 KB) with `hero-foundation-logo-512.png` as the fallback in a `<picture>`, above the 501(c)(3) pill in the hero, linked to `/`, and beside the wordmark in the footer. The same PNG is the schema `logo`.
 
 ---
 
@@ -114,7 +113,7 @@ Note: the hero and mission paragraphs are the first two places the full name, th
 | `donate-qr-gold.png` (3 instances) | Carousel card, floating button, footer | "QR code linking to the HERO Foundation donation page" | Keep | Three instances is fine; the floating one is hidden on phones |
 | `programs-bg.jpg` | CSS background | decorative | Keep | |
 | `hero-diver-flag-1200.jpg` | `og:image` only | none | Replace with `og-image.jpg` 1200x630 | Keep the file; schema `image` can still reference it |
-| `hero-foundation-logo.svg` (2 instances) | Hero, footer | "HERO Foundation badge: red dive goggles above the words HERO Foundation, Honoring Service" (hero); empty in the footer where the wordmark follows | Keep | Added PR #24. `hero-foundation-logo-512.png` is the schema `logo` |
+| `hero-foundation-logo-512.webp` / `.png` (2 instances) | Hero, footer | "HERO Foundation badge: red dive goggles above the words HERO Foundation, Honoring Service" (hero); empty in the footer where the wordmark follows | Keep | Added PR #24. `hero-foundation-logo-512.png` is the schema `logo` |
 
 Rules going forward: every `<img>` gets `alt`, `width`, `height`, and `loading="lazy"` when below the fold. Alt text describes what is in the image for someone who cannot see it; it does not repeat the caption or stuff keywords. Decorative video stays `aria-hidden="true"`.
 
@@ -384,7 +383,7 @@ Only add the long cache lines if asset filenames change when the asset changes (
 | `sitemap.xml` | Present | Present | PASS |
 | `llms.txt` | Present | Present | PASS |
 | Favicons and manifest | Present (PR #24) | Present | PASS |
-| Logo asset | `hero-foundation-logo.svg` + `-512.png` | Present | PASS |
+| Logo asset | `hero-foundation-logo-512.webp` + `.png` | Present | PASS |
 | HTTPS, HSTS, www redirect | Yes | Yes | PASS |
 | `lang` attribute | `en` | `en` | PASS |
 | Lighthouse SEO / Perf / A11y / BP | not run | record here | TODO |
