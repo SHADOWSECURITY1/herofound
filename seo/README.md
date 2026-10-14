@@ -8,12 +8,12 @@ The site is currently a single page, so there is one page spec. Add a new spec f
 
 | File | Covers | Status |
 |---|---|---|
-| [`index.md`](index.md) | `index.html` (https://herofound.org/) | Spec written 2026-10-14. Not yet applied |
+| [`index.md`](index.md) | `index.html` (https://herofound.org/) | Applied 2026-10-14 (PR #22). Open: EIN, founding year, city, logo, favicons |
 | [`_template.md`](_template.md) | Blank spec for future pages | |
 
 ## Site-level files the specs depend on
 
-These live at the repo root and are served by Netlify. All four are missing today (404 on the live site). Their exact contents are in `index.md` section 7.
+These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xml`, and `llms.txt` were added in PR #22; the icon set is still blocked on a logo file. Their exact contents are in `index.md` section 7.
 
 | File | Purpose |
 |---|---|
