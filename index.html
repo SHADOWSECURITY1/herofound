@@ -26,8 +26,7 @@
     "sameAs": ["https://www.instagram.com/herofoundationlv/", "https://www.linkedin.com/company/hero-foundation"]
   }
   </script>
-  <link rel="preload" as="image" href="hero-diver-flag.jpg" media="(min-width: 769px)">
-  <link rel="preload" as="image" href="hero-diver-flag-1200.jpg" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="hero-diver-flag-poster.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -64,13 +63,30 @@
       display: flex; align-items: center; justify-content: center;
       text-align: left; padding: 120px 48px 80px;
       position: relative; overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(6,6,9,0.68) 0%, rgba(6,6,9,0.34) 38%, rgba(6,6,9,0) 66%),
-        linear-gradient(180deg, rgba(6,6,9,0.10) 0%, rgba(10,10,15,0) 35%, rgba(10,10,15,0) 80%, #0A0A0F 100%),
-        url('hero-diver-flag.jpg') center 32% / cover no-repeat #060609;
+      /* Poster frame sits under the looping video so the hero is never blank. */
+      background: url('hero-diver-flag-poster.jpg') center 32% / cover no-repeat #060609;
     }
 
-    .foundation-hero-inner { width: 100%; max-width: 1100px; }
+    .foundation-hero-video {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 32%;
+      pointer-events: none;
+    }
+
+    /* Gradient scrim over the video, under the copy. */
+    .foundation-hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(6,6,9,0.68) 0%, rgba(6,6,9,0.34) 38%, rgba(6,6,9,0) 66%),
+        linear-gradient(180deg, rgba(6,6,9,0.10) 0%, rgba(10,10,15,0) 35%, rgba(10,10,15,0) 80%, #0A0A0F 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .foundation-hero-video { display: none; }
+    }
+
+    .foundation-hero-inner { width: 100%; max-width: 1100px; position: relative; z-index: 2; }
     .foundation-hero-copy { max-width: 760px; text-shadow: 0 2px 14px rgba(0,0,0,0.7); }
 
     .foundation-badge {
@@ -545,9 +561,12 @@
       .impact-grid { grid-template-columns: 1fr; }
       .foundation-hero {
         text-align: center;
+        background: url('hero-diver-flag-poster.jpg') 72% 30% / cover no-repeat #060609;
+      }
+      .foundation-hero-video { object-position: 72% 30%; }
+      .foundation-hero::before {
         background:
-          linear-gradient(180deg, rgba(6,6,9,0.46) 0%, rgba(6,6,9,0.40) 50%, rgba(10,10,15,0.78) 88%, #0A0A0F 100%),
-          url('hero-diver-flag-1200.jpg') 72% 30% / cover no-repeat #060609;
+          linear-gradient(180deg, rgba(6,6,9,0.46) 0%, rgba(6,6,9,0.40) 50%, rgba(10,10,15,0.78) 88%, #0A0A0F 100%);
       }
       .foundation-hero-copy { max-width: none; }
       .foundation-hero-sub { margin: 0 auto 40px; }
@@ -572,6 +591,9 @@
 
   <!-- HERO -->
   <section class="foundation-hero">
+    <video class="foundation-hero-video" autoplay muted loop playsinline preload="auto" poster="hero-diver-flag-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="hero-diver-flag.mp4" type="video/mp4">
+    </video>
     <div class="foundation-hero-inner">
       <div class="foundation-hero-copy">
       <div class="foundation-badge reveal">501(c)(3) Non-Profit Organization</div>
