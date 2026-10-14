@@ -5,7 +5,7 @@
 | **URL** | https://herofound.org/ |
 | **Canonical** | https://herofound.org/ (www and http already 301 here) |
 | **Page type** | Single-page site. Sections: hero, mission, `#origin`, `#contact` (Get Involved), `#programs`, `#donate`, footer |
-| **Spec status** | DRAFT, not yet applied to `index.html` |
+| **Spec status** | APPLIED 2026-10-14 (PR #22). Still open: EIN, founding year, city confirmation, logo, favicons |
 | **Audit date** | 2026-10-14 |
 | **Owner** | Mike |
 
@@ -365,21 +365,21 @@ Only add the long cache lines if asset filenames change when the asset changes (
 | Check | Live today | Target | Status |
 |---|---|---|---|
 | One H1 | Yes | Yes | PASS |
-| Title tag | 15 chars, brand only | 62 chars with topic | FAIL |
-| Meta description | 202 chars, truncated | 150 chars | FAIL |
-| Canonical | Missing | Self-referencing | FAIL |
-| Robots meta | Missing | Explicit index, follow | WARN |
-| OG image | 1200x1200 | 1200x630 with alt, width, height | WARN |
-| Twitter description and image | Missing | Present | FAIL |
-| `og:locale` | Missing | `en_US` | WARN |
+| Title tag | 62 chars with topic | 62 chars with topic | PASS |
+| Meta description | 150 chars | 150 chars | PASS |
+| Canonical | Self-referencing | Self-referencing | PASS |
+| Robots meta | Explicit index, follow | Explicit index, follow | PASS |
+| OG image | 1200x630 with alt, width, height | 1200x630 with alt, width, height | PASS |
+| Twitter description and image | Present | Present | PASS |
+| `og:locale` | `en_US` | `en_US` | PASS |
 | Image alt text | 3 of 3 | 3 of 3 | PASS |
 | Decorative video hidden from AT | Yes | Yes | PASS |
-| Organization schema | Thin (no logo, status, EIN, address) | Full `@graph` | FAIL |
-| Program schema | None | `ItemList` of 5 `Service` | FAIL |
-| FAQ (visible + schema) | None | 6 questions | FAIL |
-| `robots.txt` | 404 | Present with AI allowlist | FAIL |
-| `sitemap.xml` | 404 | Present | FAIL |
-| `llms.txt` | 404 | Present | FAIL |
+| Organization schema | Full `@graph` minus EIN, founding year, logo | Full `@graph` | PASS (3 fields open) |
+| Program schema | `ItemList` of 5 `Service` | `ItemList` of 5 `Service` | PASS |
+| FAQ (visible + schema) | 6 questions | 6 questions | PASS |
+| `robots.txt` | Present with AI allowlist | Present with AI allowlist | PASS |
+| `sitemap.xml` | Present | Present | PASS |
+| `llms.txt` | Present | Present | PASS |
 | Favicons and manifest | 404 | Present | FAIL |
 | Logo asset | None in repo | `logo.png` and `logo.svg` | BLOCKED on Mike |
 | HTTPS, HSTS, www redirect | Yes | Yes | PASS |
