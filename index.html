@@ -279,7 +279,7 @@
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
         linear-gradient(90deg, rgba(6,6,9,0.68) 0%, rgba(6,6,9,0.34) 38%, rgba(6,6,9,0) 66%),
-        linear-gradient(180deg, rgba(6,6,9,0.10) 0%, rgba(10,10,15,0) 35%, rgba(10,10,15,0) 80%, #0A0A0F 100%);
+        linear-gradient(180deg, rgba(6,6,9,0.10) 0%, rgba(10,10,15,0) 35%, rgba(10,10,15,0) 80%, #040c1f 100%);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -638,11 +638,37 @@
     }
     .origin-qr-sub strong { color: var(--gold); font-weight: 500; }
 
+    /* ── WATER COLUMN + DESCENDING DIVER ── */
+    /* One continuous dive: the flag diver at the surface, open water through the middle sections,
+       the B-29 on the lakebed. The connector image stretches over every section between the two videos. */
+    .dive-scope { position: relative; }
+    .water-column {
+      position: relative;
+      background: url('water-column.jpg') center / 100% 100% no-repeat #040c1f;
+    }
+    .water-column .f-section.dark, .water-column .f-section.deep, .water-column .programs-section { background: transparent; }
+    .water-column .programs-bg { display: none; }
+    .water-column .f-tag, .water-column h2, .water-column .f-section > .f-wrap > p { text-shadow: 0 2px 14px rgba(0,0,0,0.6); }
+
+    /* The diver rides above the videos and scrims (z 0/1) and below the copy (.f-wrap is z 5). */
+    .dive-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+    .dive-diver {
+      position: absolute; left: 0; top: 0;
+      width: clamp(64px, 7.5vw, 112px); aspect-ratio: 240 / 773;
+      will-change: transform; opacity: 0; transition: opacity 0.6s ease;
+    }
+    .dive-diver.ready { opacity: 1; }
+    .dive-diver img { width: 100%; height: 100%; display: block; }
+    /* Tablets have no gutter: a smaller diver rides the very edge, behind the content. */
+    @media (max-width: 1199px) { .dive-diver { width: 60px; } }
+    /* Phones: single column, no clear lane, so the diver sits out and only the water column shows. */
+    @media (max-width: 767px) { .dive-layer { display: none; } }
+
     /* ── DONATE ── */
     .donate-section {
       /* Poster frame sits under the looping video so the section is never blank. */
       background: url('donate-wreck-poster.jpg') left 45% / 125% auto no-repeat var(--fund-dark);
-      border-top: 1px solid var(--fund-border); border-bottom: 1px solid var(--fund-border);
+      border-bottom: 1px solid var(--fund-border);
     }
 
     .donate-video {
@@ -656,7 +682,16 @@
     /* Gradient scrim over the video, under the copy (.f-wrap is z-index 5). */
     .donate-section::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(90deg, rgba(10,10,15,0.38) 0%, rgba(10,10,15,0.18) 38%, rgba(10,10,15,0) 66%);
+      background:
+        linear-gradient(90deg, rgba(10,10,15,0.38) 0%, rgba(10,10,15,0.18) 38%, rgba(10,10,15,0) 66%);
+    }
+
+    /* Seam: the bottom rows of the water column, stretched and faded into the top of the wreck clip. */
+    .donate-section::after {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 120px; z-index: 1; pointer-events: none;
+      background: url('water-column-edge.jpg') center top / 100% 100% no-repeat;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 100%);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -789,7 +824,7 @@
       .foundation-hero-video { object-position: 72% 30%; }
       .foundation-hero::before {
         background:
-          linear-gradient(180deg, rgba(6,6,9,0.46) 0%, rgba(6,6,9,0.40) 50%, rgba(10,10,15,0.78) 88%, #0A0A0F 100%);
+          linear-gradient(180deg, rgba(6,6,9,0.46) 0%, rgba(6,6,9,0.40) 50%, rgba(10,10,15,0.78) 88%, #040c1f 100%);
       }
       .foundation-hero-copy { max-width: none; }
       .foundation-hero-sub { margin: 0 auto 40px; }
@@ -802,7 +837,8 @@
       /* Crop so the diver swims at the right edge, beside the ragged line ends; keep the scrim light so it reads. */
       .donate-video { width: 100%; object-position: 41% center; }
       .donate-section::before {
-        background: linear-gradient(180deg, rgba(10,10,15,0.08) 0%, rgba(10,10,15,0.05) 50%, rgba(10,10,15,0.50) 100%);
+        background:
+          linear-gradient(180deg, rgba(10,10,15,0.08) 0%, rgba(10,10,15,0.05) 50%, rgba(10,10,15,0.50) 100%);
       }
       .donate-fab { right: 16px; }
       .donate-fab-qr { display: none; }
@@ -814,6 +850,9 @@
 <body>
 
 <div class="foundation-page">
+
+  <div class="dive-scope" id="diveScope">
+  <div class="dive-layer" id="diveLayer" aria-hidden="true"><div class="dive-diver" id="diver"><img id="diverImg" alt="" src="diver/diver_00.webp" decoding="async"></div></div>
 
   <!-- HERO -->
   <section class="foundation-hero">
@@ -849,6 +888,8 @@
     </div>
   </div>
   -->
+
+  <div class="water-column">
 
   <!-- MISSION -->
   <section class="f-section dark">
@@ -1099,6 +1140,8 @@
     </div>
   </section>
 
+  </div><!-- /water-column -->
+
   <!-- DONATE -->
   <section class="f-section donate-section" id="donate">
     <video class="donate-video" autoplay muted loop playsinline preload="metadata" poster="donate-wreck-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -1116,6 +1159,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /dive-scope -->
 
   <!-- CTA: hidden for now (Oct 2026), it repeated the Donate and Origin Story calls above. To restore, delete this comment opener and the matching closer after </section>.
   <section class="foundation-cta">
@@ -1277,6 +1322,113 @@
     document.addEventListener('click', e => { if (!fab.contains(e.target)) closePop(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closePop(); });
   })();
+</script>
+
+<script>
+/* Descending diver: one diver leaves the flag diver in the hero, swims down the right-hand lane past the
+   middle sections, and settles beside the B-29 in the Donate section as the page scrolls. Scrolling back up
+   turns it upright and plays the kick in reverse so its bubbles keep rising. Honors reduced motion. */
+(function () {
+  var layer = document.getElementById('diveLayer'), diver = document.getElementById('diver'), img = document.getElementById('diverImg');
+  var scope = document.getElementById('diveScope'), hero = document.querySelector('.foundation-hero');
+  var column = document.querySelector('.water-column'), wreck = document.getElementById('donate');
+  if (!layer || !diver || !img || !scope || !hero || !column || !wreck) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N = 61, frames = [img], loading = false;
+  var P = null, lastY = window.scrollY, vel = 0, rot = 180, cur = null, f = 0, lastT = performance.now(), shown = 0, raf = 0;
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  function enabled() { return window.innerWidth >= 768 && getComputedStyle(layer).display !== 'none'; }
+
+  function preload() {
+    if (loading || reduce || !enabled()) return;
+    loading = true;
+    var next = 1;
+    function pump() {
+      if (next >= N) return;
+      var i = next++, im = new Image();
+      im.onload = im.onerror = pump;
+      im.src = 'diver/diver_' + (i < 10 ? '0' + i : i) + '.webp';
+      frames[i] = im;
+    }
+    for (var k = 0; k < 4; k++) pump();
+  }
+
+  function measure() {
+    var top = scope.getBoundingClientRect().top + window.scrollY;
+    var h = hero.getBoundingClientRect(), c = column.getBoundingClientRect(), w = wreck.getBoundingClientRect();
+    var vw = window.innerWidth, vh = window.innerHeight, dw = diver.offsetWidth || 100;
+    var wide = vw >= 1200;
+    var gutter = wide ? (vw - 1100) / 2 + 48 : 0;
+    var laneX = wide ? vw - Math.max(gutter / 2, dw / 2 + 12) : vw - dw / 2 - 6;
+    P = [
+      { x: vw * 0.84, y: Math.max(h.top + window.scrollY - top + h.height * 0.5, vh * 0.5) },
+      { x: laneX, y: c.top + window.scrollY - top + vh * 0.35 },
+      { x: laneX, y: c.bottom + window.scrollY - top - vh * 0.35 },
+      { x: vw * 0.84, y: w.top + window.scrollY - top + w.height * 0.3 }
+    ];
+    for (var i = 1; i < P.length; i++) if (P[i].y < P[i - 1].y + 1) P[i].y = P[i - 1].y + 1;
+    if (!diver.classList.contains('ready')) diver.classList.add('ready');
+  }
+
+  function pathX(y, vw) {
+    var i = 0;
+    while (i < P.length - 2 && y > P[i + 1].y) i++;
+    var s = (y - P[i].y) / ((P[i + 1].y - P[i].y) || 1);
+    s = Math.min(1, Math.max(0, s));
+    var x = lerp(P[i].x, P[i + 1].x, ease(s));
+    if (i === 1) x += Math.sin(s * Math.PI * 2.5) * Math.min(22, vw * 0.015);
+    return x;
+  }
+
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    if (!P || document.hidden || window.innerWidth < 768) { lastT = now; return; }
+    var dt = Math.min(64, now - lastT); lastT = now;
+    var top = scope.getBoundingClientRect().top + window.scrollY, vw = window.innerWidth, vh = window.innerHeight;
+    var A = P[0], B = P[P.length - 1];
+    var y = Math.min(Math.max(window.scrollY - top + vh * 0.5, A.y), B.y);
+    var t = (y - A.y) / ((B.y - A.y) || 1);
+    var x = pathX(y, vw);
+    var dy = window.scrollY - lastY; lastY = window.scrollY;
+    vel = lerp(vel, (t > 0 && t < 1) ? dy : 0, 0.15);
+    var target = t < 0.03 ? 180 : (t > 0.97 ? 40 : (Math.cos(rot * Math.PI / 180) < 0 ? 180 : 0));
+    if (t >= 0.03 && t <= 0.97) { if (vel > 0.5) target = 0; else if (vel < -0.5) target = 180; }
+    while (target - rot > 180) target -= 360;
+    while (target - rot < -180) target += 360;
+    rot = lerp(rot, target, 0.07);
+    if (!cur) cur = { x: x, y: y };
+    cur.x = lerp(cur.x, x, 0.18); cur.y = lerp(cur.y, y, 0.18);
+    var dw = diver.offsetWidth, dh = diver.offsetHeight;
+    var screenY = cur.y + top - window.scrollY;
+    if (screenY > -dh && screenY < vh + dh) {
+      // Scroll drives the kick; at rest it idles slowly. Head-up plays in reverse so the bubbles rise.
+      var dir = Math.cos(rot * Math.PI / 180) < 0 ? -1 : 1;
+      f += dir * (Math.abs(vel) > 0.5 ? Math.min(2.2, Math.abs(vel) * 0.12) : dt / 1000 * 10);
+      var idx = ((Math.round(f) % N) + N) % N, fr = frames[idx];
+      if (idx !== shown && fr && fr.complete && fr.naturalWidth) { img.src = fr.src; shown = idx; }
+    }
+    var sc = t > 0.88 ? 1 - 0.22 * Math.min(1, (t - 0.88) / 0.12) : 1;
+    diver.style.transform = 'translate(' + (cur.x - dw / 2) + 'px,' + (cur.y - dh / 2) + 'px) rotate(' + rot + 'deg) scale(' + sc.toFixed(3) + ')';
+    window.__dive = { t: t, rot: rot, x: cur.x, y: cur.y, frame: shown, loaded: frames.filter(function (im) { return im && im.complete && im.naturalWidth; }).length };
+  }
+
+  measure();
+  if (reduce) {
+    var A0 = P[0];
+    diver.style.transform = 'translate(' + (A0.x - diver.offsetWidth / 2) + 'px,' + (A0.y - diver.offsetHeight / 2) + 'px) rotate(180deg)';
+  } else {
+    raf = requestAnimationFrame(frame);
+    var heroVideo = hero.querySelector('video');
+    if (heroVideo) heroVideo.addEventListener('playing', preload, { once: true });
+    window.addEventListener('scroll', preload, { once: true, passive: true });
+    setTimeout(preload, 1500);
+  }
+  window.addEventListener('resize', function () { measure(); preload(); });
+  window.addEventListener('load', measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(scope);
+})();
 </script>
 
 </body>
