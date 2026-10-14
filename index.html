@@ -8,6 +8,12 @@
   <link rel="canonical" href="https://herofound.org/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0A0A0F">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HERO Foundation">
   <meta property="og:locale" content="en_US">
@@ -35,6 +41,12 @@
         "slogan": "Help Everyone Remain Operational",
         "url": "https://herofound.org/",
         "image": "https://herofound.org/og-image.jpg",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://herofound.org/hero-foundation-logo-512.png",
+          "width": 512,
+          "height": 512
+        },
         "email": "info@herofound.org",
         "description": "HERO Foundation (Help Everyone Remain Operational) is a Nevada 501(c)(3) nonprofit that uses scuba diving, dive certification, and peer community to support the mental health, resilience, and career pathways of veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters.",
         "nonprofitStatus": "https://schema.org/Nonprofit501c3",
@@ -288,6 +300,8 @@
 
     .foundation-hero-inner { width: 100%; max-width: 1100px; position: relative; z-index: 2; }
     .foundation-hero-copy { max-width: 760px; text-shadow: 0 2px 14px rgba(0,0,0,0.7); }
+    .site-brand { display: inline-block; margin-bottom: 26px; line-height: 0; }
+    .site-brand img { width: 88px; height: 88px; display: block; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.45)); }
 
     .foundation-badge {
       display: inline-flex; align-items: center; gap: 10px;
@@ -659,7 +673,7 @@
     }
     .dive-diver.ready { opacity: 1; }
     .dive-diver img { width: 100%; height: 100%; display: block; }
-    /* Tablets have no gutter: a smaller diver rides the very edge, behind the content. */
+    /* Tablets have no gutter: a smaller diver appears in the hero and at the wreck only. */
     @media (max-width: 1199px) { .dive-diver { width: 60px; } }
     /* Phones: single column, no clear lane, so the diver sits out and only the water column shows. */
     @media (max-width: 767px) { .dive-layer { display: none; } }
@@ -762,7 +776,9 @@
     .footer-brand {
       font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px;
       letter-spacing: 3px; text-transform: uppercase; color: var(--white);
+      display: flex; align-items: center; gap: 16px;
     }
+    .footer-logo { width: 56px; height: 56px; flex: none; }
     .footer-brand span {
       display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 400;
       font-size: 12px; letter-spacing: 2px; color: var(--fog); margin-top: 6px;
@@ -827,6 +843,8 @@
           linear-gradient(180deg, rgba(6,6,9,0.46) 0%, rgba(6,6,9,0.40) 50%, rgba(10,10,15,0.78) 88%, #040c1f 100%);
       }
       .foundation-hero-copy { max-width: none; }
+      .site-brand { margin-bottom: 20px; }
+      .site-brand img { width: 68px; height: 68px; }
       .foundation-hero-sub { margin: 0 auto 40px; }
       .foundation-hero-actions { justify-content: center; }
       .origin-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -861,6 +879,7 @@
     </video>
     <div class="foundation-hero-inner">
       <div class="foundation-hero-copy">
+      <a class="site-brand" href="/" aria-label="HERO Foundation home"><img src="hero-foundation-logo.svg" alt="HERO Foundation badge: red dive goggles above the words HERO Foundation, Honoring Service" width="88" height="88"></a>
       <div class="foundation-badge reveal">501(c)(3) Non-Profit Organization</div>
       <h1 class="reveal reveal-delay-1">BUILT FOR<br><em>THOSE WHO SERVED.</em></h1>
       <p class="foundation-hero-sub reveal reveal-delay-2">A Nevada nonprofit established to honor and support veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters through water-based healing, education, and vocational training.</p>
@@ -1177,7 +1196,7 @@
   <!-- FOOTER -->
   <footer class="foundation-footer">
     <div class="footer-wrap">
-      <div class="footer-brand">HERO Foundation<span>Nevada 501(c)(3) Nonprofit</span></div>
+      <div class="footer-brand"><img class="footer-logo" src="hero-foundation-logo.svg" alt="" width="56" height="56"><div>HERO Foundation<span>Nevada 501(c)(3) Nonprofit</span></div></div>
       <div class="footer-links">
         <a href="https://www.instagram.com/herofoundationlv/" class="footer-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>@herofoundationlv</a>
         <a href="https://www.linkedin.com/company/hero-foundation" class="footer-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Follow on LinkedIn</a>
@@ -1325,9 +1344,10 @@
 </script>
 
 <script>
-/* Descending diver: one diver leaves the flag diver in the hero, swims down the right-hand lane past the
-   middle sections, and settles beside the B-29 in the Donate section as the page scrolls. Scrolling back up
-   turns it upright and plays the kick in reverse so its bubbles keep rising. Honors reduced motion. */
+/* Descending diver: one diver hangs level at the foot of the hero, below the flag diver, facing him. Scrolling
+   down tips it nose-down and it swims the right-hand lane past the middle sections to hover above the B-29 in
+   the Donate section. Scrolling up turns it head-up and plays the kick in reverse so its bubbles keep rising.
+   Whenever the scrolling stops it levels off and drifts to the right edge. Honors reduced motion. */
 (function () {
   var layer = document.getElementById('diveLayer'), diver = document.getElementById('diver'), img = document.getElementById('diverImg');
   var scope = document.getElementById('diveScope'), hero = document.querySelector('.foundation-hero');
@@ -1335,7 +1355,7 @@
   if (!layer || !diver || !img || !scope || !hero || !column || !wreck) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var N = 61, frames = [img], loading = false;
-  var P = null, lastY = window.scrollY, vel = 0, rot = 180, cur = null, f = 0, lastT = performance.now(), shown = 0, raf = 0;
+  var P = null, lastY = window.scrollY, vel = 0, rot = 90, cur = null, f = 0, lastT = performance.now(), shown = 0, raf = 0;
   function lerp(a, b, t) { return a + (b - a) * t; }
   function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
   function enabled() { return window.innerWidth >= 768 && getComputedStyle(layer).display !== 'none'; }
@@ -1357,12 +1377,16 @@
   function measure() {
     var top = scope.getBoundingClientRect().top + window.scrollY;
     var h = hero.getBoundingClientRect(), c = column.getBoundingClientRect(), w = wreck.getBoundingClientRect();
-    var vw = window.innerWidth, vh = window.innerHeight, dw = diver.offsetWidth || 100;
+    var vw = window.innerWidth, vh = window.innerHeight;
     var wide = vw >= 1200;
     var gutter = wide ? (vw - 1100) / 2 + 48 : 0;
+    // Sized so the diver fits the gutter when level: full size on wide screens, smaller on laptops.
+    var want = wide ? Math.max(60, Math.min(112, (gutter - 16) / 3.22)) : 60;
+    diver.style.width = Math.round(want) + 'px';
+    var dw = diver.offsetWidth || want, dh = diver.offsetHeight || dw * 3.22;
     var laneX = wide ? vw - Math.max(gutter / 2, dw / 2 + 12) : vw - dw / 2 - 6;
     P = [
-      { x: vw * 0.84, y: Math.max(h.top + window.scrollY - top + h.height * 0.5, vh * 0.5) },
+      { x: vw - dh / 2 - 16, y: Math.max(h.top + window.scrollY - top + h.height * 0.88, vh * 0.5) },
       { x: laneX, y: c.top + window.scrollY - top + vh * 0.35 },
       { x: laneX, y: c.bottom + window.scrollY - top - vh * 0.35 },
       { x: vw * 0.84, y: w.top + window.scrollY - top + w.height * 0.3 }
@@ -1387,19 +1411,24 @@
     var dt = Math.min(64, now - lastT); lastT = now;
     var top = scope.getBoundingClientRect().top + window.scrollY, vw = window.innerWidth, vh = window.innerHeight;
     var A = P[0], B = P[P.length - 1];
-    var y = Math.min(Math.max(window.scrollY - top + vh * 0.5, A.y), B.y);
+    // Starts moving with the first pixel of scroll, then eases to riding mid-screen.
+    var sy = window.scrollY - top, off = lerp(A.y, vh * 0.5, Math.min(1, Math.max(0, sy / 600)));
+    var y = Math.min(Math.max(sy + off, A.y), B.y);
     var t = (y - A.y) / ((B.y - A.y) || 1);
     var x = pathX(y, vw);
     var dy = window.scrollY - lastY; lastY = window.scrollY;
     vel = lerp(vel, (t > 0 && t < 1) ? dy : 0, 0.15);
-    var target = t < 0.03 ? 180 : (t > 0.97 ? 40 : (Math.cos(rot * Math.PI / 180) < 0 ? 180 : 0));
-    if (t >= 0.03 && t <= 0.97) { if (vel > 0.5) target = 0; else if (vel < -0.5) target = 180; }
+    // Nose-down while scrolling down, head-up while scrolling up, level (head toward the page) at rest.
+    var moving = Math.abs(vel) > 0.5;
+    var target = moving ? (vel > 0 ? 0 : 180) : 90;
     while (target - rot > 180) target -= 360;
     while (target - rot < -180) target += 360;
     rot = lerp(rot, target, 0.07);
+    var dw = diver.offsetWidth, dh = diver.offsetHeight;
+    // The lane is too narrow for a level diver, so as it levels it slides right until its fins meet the edge.
+    x = lerp(x, vw - dh / 2 - 16, Math.abs(Math.sin(rot * Math.PI / 180)));
     if (!cur) cur = { x: x, y: y };
     cur.x = lerp(cur.x, x, 0.18); cur.y = lerp(cur.y, y, 0.18);
-    var dw = diver.offsetWidth, dh = diver.offsetHeight;
     var screenY = cur.y + top - window.scrollY;
     if (screenY > -dh && screenY < vh + dh) {
       // Scroll drives the kick; at rest it idles slowly. Head-up plays in reverse so the bubbles rise.
@@ -1408,15 +1437,16 @@
       var idx = ((Math.round(f) % N) + N) % N, fr = frames[idx];
       if (idx !== shown && fr && fr.complete && fr.naturalWidth) { img.src = fr.src; shown = idx; }
     }
-    var sc = t > 0.88 ? 1 - 0.22 * Math.min(1, (t - 0.88) / 0.12) : 1;
-    diver.style.transform = 'translate(' + (cur.x - dw / 2) + 'px,' + (cur.y - dh / 2) + 'px) rotate(' + rot + 'deg) scale(' + sc.toFixed(3) + ')';
+    // Tablets have no gutter: show the diver in the hero and at the wreck, fade it through the lane.
+    diver.style.opacity = (vw >= 1200 || y <= P[1].y || y >= P[2].y) ? '' : '0';
+    diver.style.transform = 'translate(' + (cur.x - dw / 2) + 'px,' + (cur.y - dh / 2) + 'px) rotate(' + rot + 'deg)';
     window.__dive = { t: t, rot: rot, x: cur.x, y: cur.y, frame: shown, loaded: frames.filter(function (im) { return im && im.complete && im.naturalWidth; }).length };
   }
 
   measure();
   if (reduce) {
     var A0 = P[0];
-    diver.style.transform = 'translate(' + (A0.x - diver.offsetWidth / 2) + 'px,' + (A0.y - diver.offsetHeight / 2) + 'px) rotate(180deg)';
+    diver.style.transform = 'translate(' + (A0.x - diver.offsetWidth / 2) + 'px,' + (A0.y - diver.offsetHeight / 2) + 'px) rotate(90deg)';
   } else {
     raf = requestAnimationFrame(frame);
     var heroVideo = hero.querySelector('video');
