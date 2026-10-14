@@ -672,7 +672,7 @@
     }
     .dive-diver.ready { opacity: 1; }
     .dive-diver img { width: 100%; height: 100%; display: block; }
-    /* Tablets have no gutter: a smaller diver appears in the hero and at the wreck only. */
+    /* Tablets have no gutter: a smaller diver rides the very edge, behind the content. */
     @media (max-width: 1199px) { .dive-diver { width: 60px; } }
     /* Phones: single column, no clear lane, so the diver sits out and only the water column shows. */
     @media (max-width: 767px) { .dive-layer { display: none; } }
@@ -1343,10 +1343,10 @@
 </script>
 
 <script>
-/* Descending diver: one diver hangs level at the foot of the hero, below the flag diver, facing him. Scrolling
-   down tips it nose-down and it swims the right-hand lane past the middle sections to hover above the B-29 in
-   the Donate section. Scrolling up turns it head-up and plays the kick in reverse so its bubbles keep rising.
-   Whenever the scrolling stops it levels off and drifts to the right edge. Honors reduced motion. */
+/* Descending diver: one diver waits head-up at the foot of the hero, below the flag diver. Scrolling down
+   turns it nose-down and it swims the right-hand lane past the middle sections; scrolling up turns it head-up
+   and plays the kick in reverse so its bubbles keep rising. When the scrolling stops it holds whichever way it
+   was last heading. At the B-29 it levels off and hovers. Honors reduced motion. */
 (function () {
   var layer = document.getElementById('diveLayer'), diver = document.getElementById('diver'), img = document.getElementById('diverImg');
   var scope = document.getElementById('diveScope'), hero = document.querySelector('.foundation-hero');
@@ -1354,7 +1354,7 @@
   if (!layer || !diver || !img || !scope || !hero || !column || !wreck) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var N = 61, frames = [img], loading = false;
-  var P = null, lastY = window.scrollY, vel = 0, rot = 90, cur = null, f = 0, lastT = performance.now(), shown = 0, raf = 0;
+  var P = null, lastY = window.scrollY, vel = 0, rot = 180, heading = 180, cur = null, f = 0, lastT = performance.now(), shown = 0, raf = 0;
   function lerp(a, b, t) { return a + (b - a) * t; }
   function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
   function enabled() { return window.innerWidth >= 768 && getComputedStyle(layer).display !== 'none'; }
@@ -1379,13 +1379,10 @@
     var vw = window.innerWidth, vh = window.innerHeight;
     var wide = vw >= 1200;
     var gutter = wide ? (vw - 1100) / 2 + 48 : 0;
-    // Sized so the diver fits the gutter when level: full size on wide screens, smaller on laptops.
-    var want = wide ? Math.max(60, Math.min(112, (gutter - 16) / 3.22)) : 60;
-    diver.style.width = Math.round(want) + 'px';
-    var dw = diver.offsetWidth || want, dh = diver.offsetHeight || dw * 3.22;
+    var dw = diver.offsetWidth || 100;
     var laneX = wide ? vw - Math.max(gutter / 2, dw / 2 + 12) : vw - dw / 2 - 6;
     P = [
-      { x: vw - dh / 2 - 16, y: Math.max(h.top + window.scrollY - top + h.height * 0.88, vh * 0.5) },
+      { x: laneX, y: Math.max(h.top + window.scrollY - top + h.height * 0.88, vh * 0.5) },
       { x: laneX, y: c.top + window.scrollY - top + vh * 0.35 },
       { x: laneX, y: c.bottom + window.scrollY - top - vh * 0.35 },
       { x: vw * 0.84, y: w.top + window.scrollY - top + w.height * 0.3 }
@@ -1417,15 +1414,14 @@
     var x = pathX(y, vw);
     var dy = window.scrollY - lastY; lastY = window.scrollY;
     vel = lerp(vel, (t > 0 && t < 1) ? dy : 0, 0.15);
-    // Nose-down while scrolling down, head-up while scrolling up, level (head toward the page) at rest.
-    var moving = Math.abs(vel) > 0.5;
-    var target = moving ? (vel > 0 ? 0 : 180) : 90;
+    // Nose-down while scrolling down, head-up while scrolling up; at rest it keeps its last heading.
+    // At the wreck it levels off (head toward the page) and hovers.
+    if (Math.abs(vel) > 0.5) heading = vel > 0 ? 0 : 180;
+    var target = t >= 0.97 ? 90 : heading;
     while (target - rot > 180) target -= 360;
     while (target - rot < -180) target += 360;
     rot = lerp(rot, target, 0.07);
     var dw = diver.offsetWidth, dh = diver.offsetHeight;
-    // The lane is too narrow for a level diver, so as it levels it slides right until its fins meet the edge.
-    x = lerp(x, vw - dh / 2 - 16, Math.abs(Math.sin(rot * Math.PI / 180)));
     if (!cur) cur = { x: x, y: y };
     cur.x = lerp(cur.x, x, 0.18); cur.y = lerp(cur.y, y, 0.18);
     var screenY = cur.y + top - window.scrollY;
@@ -1436,8 +1432,6 @@
       var idx = ((Math.round(f) % N) + N) % N, fr = frames[idx];
       if (idx !== shown && fr && fr.complete && fr.naturalWidth) { img.src = fr.src; shown = idx; }
     }
-    // Tablets have no gutter: show the diver in the hero and at the wreck, fade it through the lane.
-    diver.style.opacity = (vw >= 1200 || y <= P[1].y || y >= P[2].y) ? '' : '0';
     diver.style.transform = 'translate(' + (cur.x - dw / 2) + 'px,' + (cur.y - dh / 2) + 'px) rotate(' + rot + 'deg)';
     window.__dive = { t: t, rot: rot, x: cur.x, y: cur.y, frame: shown, loaded: frames.filter(function (im) { return im && im.complete && im.naturalWidth; }).length };
   }
@@ -1445,7 +1439,7 @@
   measure();
   if (reduce) {
     var A0 = P[0];
-    diver.style.transform = 'translate(' + (A0.x - diver.offsetWidth / 2) + 'px,' + (A0.y - diver.offsetHeight / 2) + 'px) rotate(90deg)';
+    diver.style.transform = 'translate(' + (A0.x - diver.offsetWidth / 2) + 'px,' + (A0.y - diver.offsetHeight / 2) + 'px) rotate(180deg)';
   } else {
     raf = requestAnimationFrame(frame);
     var heroVideo = hero.querySelector('video');
