@@ -8,19 +8,19 @@ The site is currently a single page, so there is one page spec. Add a new spec f
 
 | File | Covers | Status |
 |---|---|---|
-| [`index.md`](index.md) | `index.html` (https://herofound.org/) | Applied 2026-10-14 (PR #22). Open: EIN, founding year, city, logo, favicons |
+| [`index.md`](index.md) | `index.html` (https://herofound.org/) | Applied 2026-10-14 (PR #22); logo and icons PR #24. Open: EIN, founding year, city |
 | [`_template.md`](_template.md) | Blank spec for future pages | |
 
 ## Site-level files the specs depend on
 
-These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xml`, and `llms.txt` were added in PR #22; the icon set is still blocked on a logo file. Their exact contents are in `index.md` section 7.
+These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xml`, and `llms.txt` were added in PR #22; the icon set and logo in PR #24. Their exact contents are in `index.md` section 7.
 
 | File | Purpose |
 |---|---|
 | `robots.txt` | Allows search engines and names each AI crawler explicitly (named groups do not inherit the wildcard group) |
 | `sitemap.xml` | One entry per real URL with `lastmod`. Anchors are not URLs |
 | `llms.txt` | Plain-text summary of the organization and pages for AI assistants |
-| `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons. Blocked until a logo file exists in the repo |
+| `favicon.svg`, `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons, cut from the goggles in the HERO badge |
 
 ## How to use a spec
 
@@ -46,5 +46,4 @@ These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xm
 - EIN (for the FAQ answer on tax-deductibility and `taxID` in schema).
 - Founding year.
 - Whether "Las Vegas" may be used in copy and schema (the Instagram handle implies it).
-- The HERO logo as SVG or a 1024px PNG.
 - Google Search Console and Bing Webmaster Tools domain verification, then sitemap submission.

@@ -5,7 +5,7 @@
 | **URL** | https://herofound.org/ |
 | **Canonical** | https://herofound.org/ (www and http already 301 here) |
 | **Page type** | Single-page site. Sections: hero, mission, `#origin`, `#contact` (Get Involved), `#programs`, `#donate`, footer |
-| **Spec status** | APPLIED 2026-10-14 (PR #22). Still open: EIN, founding year, city confirmation, logo, favicons |
+| **Spec status** | APPLIED 2026-10-14 (PR #22); logo and icon set added 2026-10-14 (PR #24). Still open: EIN, founding year, city confirmation |
 | **Audit date** | 2026-10-14 |
 | **Owner** | Mike |
 
@@ -66,16 +66,19 @@ This file is the source of truth for how the home page should present itself to 
 | `twitter:image` | missing | same as `og:image` |
 | `twitter:image:alt` | missing | same as `og:image:alt` |
 
-### Icons and manifest (all currently 404)
+### Icons and manifest (added 2026-10-14 from Mike's logo kit)
+
+The full badge is unreadable at tab size, so the favicon is the badge's red goggles on a navy disc with a cream rim. Files from `HERO-Foundation-Logo-Kit/favicon/`, served from the root.
 
 | File | Spec |
 |---|---|
-| `favicon.svg` | Mark from the HERO logo (the badge on the diver's tank). Single colour gold `#D4A843` on transparent |
-| `favicon.ico` | 32x32 and 16x16 from the same mark |
-| `apple-touch-icon.png` | 180x180, gold mark on `#0A0A0F` |
-| `site.webmanifest` | `name` "HERO Foundation", `short_name` "HERO", `theme_color` `#0A0A0F`, `background_color` `#0A0A0F`, 192 and 512 icons |
+| `favicon.svg` | Goggles mark, vector, for modern browsers |
+| `favicon.ico` | 48x48 fallback, `sizes="any"` |
+| `favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `favicon-192.png`, `favicon-512.png` | PNG sizes; 32 and 192 are linked in `<head>`, 192 and 512 feed the manifest |
+| `apple-touch-icon.png` | 180x180, opaque |
+| `site.webmanifest` | `name` "HERO Foundation", `short_name` "HERO", `display` browser, `theme_color` and `background_color` `#0A0A0F`, 192 and 512 icons |
 
-**Blocker:** the repo has no logo file. Mike to supply the HERO badge as SVG or a 1024px PNG. The same asset feeds `logo` in the schema below.
+**Logo on the page:** `hero-foundation-logo.svg` (the "rim" badge for dark backgrounds, 50 KB vector) sits above the 501(c)(3) pill in the hero, linked to `/`, and beside the wordmark in the footer. `hero-foundation-logo-512.png` is the schema `logo`.
 
 ---
 
@@ -111,7 +114,7 @@ Note: the hero and mission paragraphs are the first two places the full name, th
 | `donate-qr-gold.png` (3 instances) | Carousel card, floating button, footer | "QR code linking to the HERO Foundation donation page" | Keep | Three instances is fine; the floating one is hidden on phones |
 | `programs-bg.jpg` | CSS background | decorative | Keep | |
 | `hero-diver-flag-1200.jpg` | `og:image` only | none | Replace with `og-image.jpg` 1200x630 | Keep the file; schema `image` can still reference it |
-| Logo | none exists | | Add `logo.png` (1024px, transparent) and `logo.svg` | Needed for schema `logo`, favicons, and Google's knowledge panel |
+| `hero-foundation-logo.svg` (2 instances) | Hero, footer | "HERO Foundation badge: red dive goggles above the words HERO Foundation, Honoring Service" (hero); empty in the footer where the wordmark follows | Keep | Added PR #24. `hero-foundation-logo-512.png` is the schema `logo` |
 
 Rules going forward: every `<img>` gets `alt`, `width`, `height`, and `loading="lazy"` when below the fold. Alt text describes what is in the image for someone who cannot see it; it does not repeat the caption or stuff keywords. Decorative video stays `aria-hidden="true"`.
 
@@ -134,7 +137,7 @@ Placeholders in `ALL_CAPS` need a real value from Mike before this ships. Remove
       "alternateName": "Help Everyone Remain Operational",
       "slogan": "Help Everyone Remain Operational",
       "url": "https://herofound.org/",
-      "logo": "https://herofound.org/logo.png",
+      "logo": { "@type": "ImageObject", "url": "https://herofound.org/hero-foundation-logo-512.png", "width": 512, "height": 512 },
       "image": "https://herofound.org/og-image.jpg",
       "email": "info@herofound.org",
       "description": "HERO Foundation (Help Everyone Remain Operational) is a Nevada 501(c)(3) nonprofit that uses scuba diving, dive certification, and peer community to support the mental health, resilience, and career pathways of veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters.",
@@ -374,14 +377,14 @@ Only add the long cache lines if asset filenames change when the asset changes (
 | `og:locale` | `en_US` | `en_US` | PASS |
 | Image alt text | 3 of 3 | 3 of 3 | PASS |
 | Decorative video hidden from AT | Yes | Yes | PASS |
-| Organization schema | Full `@graph` minus EIN, founding year, logo | Full `@graph` | PASS (3 fields open) |
+| Organization schema | Full `@graph` minus EIN, founding year | Full `@graph` | PASS (2 fields open) |
 | Program schema | `ItemList` of 5 `Service` | `ItemList` of 5 `Service` | PASS |
 | FAQ (visible + schema) | 6 questions | 6 questions | PASS |
 | `robots.txt` | Present with AI allowlist | Present with AI allowlist | PASS |
 | `sitemap.xml` | Present | Present | PASS |
 | `llms.txt` | Present | Present | PASS |
-| Favicons and manifest | 404 | Present | FAIL |
-| Logo asset | None in repo | `logo.png` and `logo.svg` | BLOCKED on Mike |
+| Favicons and manifest | Present (PR #24) | Present | PASS |
+| Logo asset | `hero-foundation-logo.svg` + `-512.png` | Present | PASS |
 | HTTPS, HSTS, www redirect | Yes | Yes | PASS |
 | `lang` attribute | `en` | `en` | PASS |
 | Lighthouse SEO / Perf / A11y / BP | not run | record here | TODO |
@@ -392,13 +395,13 @@ Only add the long cache lines if asset filenames change when the asset changes (
 
 Things only Mike can supply are marked. Everything else can ship in one pull request.
 
-1. **Mike:** EIN, founding year, city confirmation, and the HERO logo file (SVG or 1024px PNG).
+1. **Mike:** EIN, founding year, city confirmation. (Logo supplied 2026-10-14.)
 2. Head: title, description, canonical, robots, theme-color, full OG and Twitter block.
 3. Create `og-image.jpg` (1200x630) from `hero-diver-flag-poster.jpg`; point `og:image` and `twitter:image` at it.
 4. Replace the JSON-LD block with the `@graph` in section 5, filling placeholders or removing them.
 5. Add the FAQ section (section 6.3) to the page and the matching `FAQPage` entries to the graph.
 6. Add `robots.txt`, `sitemap.xml`, `llms.txt`.
-7. Favicons and `site.webmanifest` once the logo exists.
+7. Favicons and `site.webmanifest` (done, PR #24).
 8. Donate video `preload="metadata"`.
 9. Validate: Rich Results Test, Schema Markup Validator, Facebook Sharing Debugger, LinkedIn Post Inspector, Lighthouse mobile.
 10. **Mike:** verify the domain in Google Search Console and Bing Webmaster Tools, submit `https://herofound.org/sitemap.xml` (full URL, domain properties reject relative paths), request indexing. Apply for Google for Nonprofits (Ad Grants) once the EIN is public on the page.
