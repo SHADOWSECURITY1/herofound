@@ -23,7 +23,7 @@ These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xm
 | `robots.txt` | Allows search engines and names each AI crawler explicitly (named groups do not inherit the wildcard group) |
 | `sitemap.xml` | One entry per real URL with `lastmod`. Anchors are not URLs |
 | `_redirects` | Netlify redirects. The legal pages use clean URLs; their `.html` forms 301 to them |
-| `legal.css` | Shared shell for the legal pages, including a copy of the home-page footer. Footer markup is duplicated in `index.html` and each legal page; change all four together |
+| `legal.css` | Shared shell for the legal pages. Hero, water-column, Donate, and button rules are synced from `index.html` by `tools/sync_legal_css.py`; the footer is a hand-kept copy. Footer markup is duplicated in `index.html` and each legal page; change all four together |
 | `llms.txt` | Plain-text summary of the organization and pages for AI assistants |
 | `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons, cut from the goggles in the HERO badge. Raster only: the kit's SVG redraws do not match the artwork |
 

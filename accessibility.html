@@ -77,21 +77,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow+Condensed:wght@400;500&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/legal.css">
-  <link rel="stylesheet" href="/cursor.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="legal-header">
-    <div class="legal-header-wrap">
-      <a class="legal-brand" href="/" aria-label="HERO Foundation home"><picture><source type="image/webp" srcset="hero-foundation-logo-512.webp"><img src="hero-foundation-logo-512.png" alt="" width="48" height="48"></picture><div>HERO Foundation<span>Nevada 501(c)(3) Nonprofit</span></div></a>
-      <a class="legal-home" href="/">Back to the site</a>
-    </div>
-  </header>
 
+  <!-- HERO: the home page's flag-diver hero, shorter, carrying the badge and the page title -->
+  <section class="foundation-hero legal-hero">
+    <video class="foundation-hero-video" autoplay muted loop playsinline preload="metadata" poster="hero-diver-flag-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="hero-diver-flag.mp4" type="video/mp4">
+    </video>
+    <div class="foundation-hero-inner">
+      <div class="foundation-hero-copy">
+        <a class="site-brand" href="/" aria-label="HERO Foundation home"><picture><source type="image/webp" srcset="hero-foundation-logo-512.webp"><img src="hero-foundation-logo-512.png" alt="HERO Foundation badge: red dive goggles above the words HERO Foundation, Honoring Service" width="140" height="140"></picture></a>
+        <div class="f-tag">For everyone</div>
+        <h1>Accessibility <em>Statement</em></h1>
+        <p class="legal-updated">Last updated October 14, 2026</p>
+        <div class="foundation-hero-actions"><a href="/" class="btn-fund-ghost">Back to the site</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="water-column">
   <main id="main" class="legal-main">
-    <div class="legal-tag">For everyone</div>
-    <h1>Accessibility <em>Statement</em></h1>
-    <p class="legal-updated">Last updated October 14, 2026</p>
     <p class="legal-lead">We build herofound.org so that the people we serve can use it, whatever their abilities and whatever device or assistive technology they rely on. This page says what we do, what we still need to improve, and how to reach us.</p>
     <nav class="legal-toc" aria-label="On this page"><strong>On this page</strong><ul><li><a href="#commitment">Our commitment</a></li><li><a href="#standard">The standard we work to</a></li><li><a href="#what-we-have-done">What we have done</a></li><li><a href="#motion">Motion and video</a></li><li><a href="#limitations">Known limitations</a></li><li><a href="#compatibility">Browsers and assistive technology</a></li><li><a href="#feedback">Tell us about a barrier</a></li><li><a href="#contact">Contact</a></li></ul></nav>
 
@@ -132,6 +139,25 @@
       <p>HERO Foundation, Nevada 501(c)(3) nonprofit. <a href="mailto:info@herofound.org">info@herofound.org</a>.</p>
 
   </main>
+  </div>
+
+  <!-- DONATE: the home page's B-29 block -->
+  <section class="f-section donate-section" id="donate">
+    <video class="donate-video" autoplay muted loop playsinline preload="metadata" poster="donate-wreck-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="donate-wreck.mp4" type="video/mp4">
+    </video>
+    <div class="f-wrap">
+      <div class="donate-copy">
+          <div class="f-tag">Donate</div>
+          <h2>FUEL THE<br><em>NEXT DIVE.</em></h2>
+          <p>Every gift puts a veteran, first responder, nurse, or teacher in the water: certifications, therapeutic dives, scholarships, and a community that keeps them moving forward.</p>
+          <div class="donate-actions">
+            <a href="https://link.clover.com/urlshortener/wZVcKj" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
+          </div>
+          <p class="donate-alt">Prefer to give another way? Email <a href="mailto:info@herofound.org">info@herofound.org</a> and we will get right back to you.</p>
+      </div>
+    </div>
+  </section>
 
   <footer class="foundation-footer">
     <div class="footer-wrap">
