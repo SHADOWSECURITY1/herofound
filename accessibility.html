@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accessibility Statement | HERO Foundation, Nevada 501(c)(3)</title>
-  <meta name="description" content="HERO Foundation's accessible website: WCAG 2.1 AA target, reduced motion, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
+  <meta name="description" content="HERO Foundation accessibility: WCAG 2.2 AA target, pause motion control, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
   <link rel="canonical" href="https://herofound.org/accessibility">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0A0A0F">
@@ -18,14 +18,14 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://herofound.org/accessibility">
   <meta property="og:title" content="Accessibility Statement | HERO Foundation, Nevada 501(c)(3)">
-  <meta property="og:description" content="HERO Foundation's accessible website: WCAG 2.1 AA target, reduced motion, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
+  <meta property="og:description" content="HERO Foundation accessibility: WCAG 2.2 AA target, pause motion control, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
   <meta property="og:image" content="https://herofound.org/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Scuba diver carrying an American flag underwater, lit by sunlight from the surface">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accessibility Statement | HERO Foundation, Nevada 501(c)(3)">
-  <meta name="twitter:description" content="HERO Foundation's accessible website: WCAG 2.1 AA target, reduced motion, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
+  <meta name="twitter:description" content="HERO Foundation accessibility: WCAG 2.2 AA target, pause motion control, keyboard access, and how to report a barrier. Tell us if anything is hard to use.">
   <meta name="twitter:image" content="https://herofound.org/og-image.jpg">
   <script type="application/ld+json">
 {
@@ -36,7 +36,7 @@
       "@id": "https://herofound.org/accessibility#webpage",
       "url": "https://herofound.org/accessibility",
       "name": "Accessibility Statement | HERO Foundation, Nevada 501(c)(3)",
-      "description": "HERO Foundation's accessible website: WCAG 2.1 AA target, reduced motion, keyboard access, and how to report a barrier. Tell us if anything is hard to use.",
+      "description": "HERO Foundation accessibility: WCAG 2.2 AA target, pause motion control, keyboard access, and how to report a barrier. Tell us if anything is hard to use.",
       "inLanguage": "en-US",
       "dateModified": "2026-10-14",
       "isPartOf": {
@@ -106,7 +106,7 @@
       <p>HERO Foundation serves veterans, first responders, nurses, teachers, EMTs, police officers, and firefighters, including people living with injuries, post-traumatic stress, and other disabilities. We want everyone to be able to read about our work, find out how to take part, and donate without barriers. Accessibility is part of the mission, not an add-on.</p>
 
       <h2 id="standard">The standard we work to</h2>
-      <p>We aim to meet the <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.1</a> at Level AA. We review the site against those guidelines when we make changes and we fix what we find.</p>
+      <p>We aim to meet the <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.2</a> at Level AA, which includes everything in WCAG 2.1 Level AA. We check the site against those guidelines with automated tools and by hand whenever we change it, and we fix what we find. This is a self-assessment; we have not yet commissioned an independent audit.</p>
 
       <h2 id="what-we-have-done">What we have done</h2>
       <ul>
@@ -116,16 +116,18 @@
         <li>Text keeps strong contrast against the background, including where it sits over photographs and video.</li>
         <li>The layout adapts to phones, tablets, and desktops, and text can be enlarged to 200 percent without loss of content.</li>
         <li>A "Skip to content" link is the first item on every page for keyboard users.</li>
+        <li>A "Pause motion" button in the bottom-left corner of every page stops the background videos, the scrolling diver, and the program carousel, and remembers your choice in this browser.</li>
+        <li>The program carousel can be operated with a keyboard: its arrows and dots are buttons with labels, it announces the current program to screen readers, and it stops advancing on its own while you are inside it.</li>
+        <li>Buttons and controls are at least 24 pixels in size, and the floating Donate button moves out of the way near the footer so it never covers what you have focused.</li>
         <li>Nothing flashes, and nothing is timed or expires.</li>
       </ul>
 
       <h2 id="motion">Motion and video</h2>
-      <p>The home page uses short, silent, looping video clips and a scrolling diver animation as decoration. They carry no information that is not also in the text. If you have turned on "Reduce motion" in your operating system or browser settings, the videos are replaced by still images and the diver does not move.</p>
+      <p>The home page uses short, silent, looping video clips and a scrolling diver animation as decoration. They carry no information that is not also in the text. The "Pause motion" button stops them, and if you have turned on "Reduce motion" in your operating system or browser settings they start out stopped.</p>
 
       <h2 id="limitations">Known limitations</h2>
-      <p>We are aware of these limitations and are working on them:</p>
+      <p>We are aware of these limitations:</p>
       <ul>
-        <li>The program carousel on the home page is a visual, rotating element. Its content is available to screen readers as ordinary text, and the same information appears in the FAQ, but the rotating presentation may be harder to follow for some users.</li>
         <li>Donations are completed on a checkout page operated by Clover, and our social-media profiles are on Instagram and LinkedIn. We do not control the accessibility of those services.</li>
       </ul>
 
@@ -178,5 +180,6 @@
       <div class="footer-copy">&copy; 2026 HERO Foundation - All Rights Reserved</div>
     </div>
   </footer>
+<script src="/motion.js"></script>
 </body>
 </html>

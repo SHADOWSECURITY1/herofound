@@ -22,7 +22,7 @@
 | Tag | Value | Length |
 |---|---|---|
 | `<title>` | `Accessibility Statement | HERO Foundation, Nevada 501(c)(3)` | 59 |
-| `meta description` | `HERO Foundation's accessible website: WCAG 2.1 AA target, reduced motion, keyboard access, and how to report a barrier. Tell us if anything is hard to use.` | 155 |
+| `meta description` | `HERO Foundation accessibility: WCAG 2.2 AA target, pause motion control, keyboard access, and how to report a barrier. Tell us if anything is hard to use.` | 154 |
 | `canonical` | `https://herofound.org/accessibility` | |
 | `robots` | `index, follow` | |
 | OG / Twitter | Same title and description; `og-image.jpg` shared with the home page | |
@@ -61,7 +61,7 @@ Each legal page opens with the home page's flag-diver hero (badge, eyebrow, H1, 
 | Check | Status |
 |---|---|
 | Title 50 to 62 chars | PASS (59) |
-| Description 140 to 155 chars, ends in a CTA | PASS (155) |
+| Description 140 to 155 chars, ends in a CTA | PASS (154) |
 | Self-referencing canonical | PASS |
 | One H1, H2 per section | PASS |
 | Skip link, landmarks, visible focus | PASS |
