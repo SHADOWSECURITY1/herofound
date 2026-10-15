@@ -1,0 +1,17 @@
+/* Underwater pointers for herofound.org: a diver-down flag as the pointer and a diver's "OK"
+   hand signal over links and buttons. Applied only on devices with a real pointer; phones and
+   tablets never show a cursor. Hotspots: flag pole tip (6,1); OK ring centre (10,21). The PNGs
+   are drawn at 32px (1x) and 64px (2x); browsers ignore cursors larger than that. */
+@media (hover: hover) and (pointer: fine) {
+  html, body {
+    cursor: url('/cursor-flag.png') 6 1, auto;
+    cursor: -webkit-image-set(url('/cursor-flag.png') 1x, url('/cursor-flag@2x.png') 2x) 6 1, auto;
+    cursor: image-set(url('/cursor-flag.png') 1x, url('/cursor-flag@2x.png') 2x) 6 1, auto;
+  }
+  a, button, [role="button"], summary, label,
+  .coverflow-stage, .cf-card, .cf-dot, .cf-arrow, .cf-nav, .donate-fab-link, .donate-fab-qr-btn {
+    cursor: url('/cursor-ok.png') 10 21, pointer;
+    cursor: -webkit-image-set(url('/cursor-ok.png') 1x, url('/cursor-ok@2x.png') 2x) 10 21, pointer;
+    cursor: image-set(url('/cursor-ok.png') 1x, url('/cursor-ok@2x.png') 2x) 10 21, pointer;
+  }
+}
