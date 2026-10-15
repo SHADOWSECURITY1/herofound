@@ -9,6 +9,9 @@ The site is currently a single page, so there is one page spec. Add a new spec f
 | File | Covers | Status |
 |---|---|---|
 | [`index.md`](index.md) | `index.html` (https://herofound.org/) | Applied 2026-10-14 (PR #22); logo and icons PR #24. Open: EIN, founding year, city |
+| [`accessibility.md`](accessibility.md) | `accessibility.html` (https://herofound.org/accessibility) | Applied 2026-10-14 (PR #29). Open: counsel review |
+| [`privacy-policy.md`](privacy-policy.md) | `privacy-policy.html` (https://herofound.org/privacy-policy) | Applied 2026-10-14 (PR #29). Open: counsel review |
+| [`terms-of-service.md`](terms-of-service.md) | `terms-of-service.html` (https://herofound.org/terms-of-service) | Applied 2026-10-14 (PR #29). Open: counsel review |
 | [`_template.md`](_template.md) | Blank spec for future pages | |
 
 ## Site-level files the specs depend on
@@ -19,6 +22,8 @@ These live at the repo root and are served by Netlify. `robots.txt`, `sitemap.xm
 |---|---|
 | `robots.txt` | Allows search engines and names each AI crawler explicitly (named groups do not inherit the wildcard group) |
 | `sitemap.xml` | One entry per real URL with `lastmod`. Anchors are not URLs |
+| `_redirects` | Netlify redirects. The legal pages use clean URLs; their `.html` forms 301 to them |
+| `legal.css` | Shared shell for the legal pages, including a copy of the home-page footer. Footer markup is duplicated in `index.html` and each legal page; change all four together |
 | `llms.txt` | Plain-text summary of the organization and pages for AI assistants |
 | `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Browser and home-screen icons, cut from the goggles in the HERO badge. Raster only: the kit's SVG redraws do not match the artwork |
 

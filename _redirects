@@ -1,0 +1,4 @@
+# Netlify ignores a redirect when a file exists at the source path unless it is forced with "!".
+/privacy-policy.html    /privacy-policy    301!
+/terms-of-service.html  /terms-of-service  301!
+/accessibility.html     /accessibility     301!
