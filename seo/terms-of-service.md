@@ -53,7 +53,7 @@ One `@graph` with `WebPage` (`@id` `https://herofound.org/terms-of-service#webpa
 
 ## 5. Shared shell
 
-`legal.css` holds the shell: header with the badge and a "Back to the site" link, prose styles, and a copy of the home-page footer. The footer markup lives in `index.html` and in each legal page; change them together.
+Each legal page opens with the home page's flag-diver hero (badge, eyebrow, H1, "Back to the site"), carries its text in a dark card over the water column, and closes with the home page's B-29 Donate block. `legal.css` reuses the home page's class names; the hero, water-column, Donate, and button rules are copied in by `tools/sync_legal_css.py` (run it after editing those rules in `index.html`). The footer markup lives in `index.html` and in each legal page; change them together.
 
 ## 6. Facts the copy relies on
 
