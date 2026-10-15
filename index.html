@@ -268,6 +268,15 @@
     a:hover { color: var(--white); }
 
     .foundation-page { background: var(--fund-dark); color: var(--white); font-family: 'Barlow', sans-serif; }
+    html { scroll-padding-bottom: 96px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .skip-link {
+      position: absolute; left: -999px; top: 8px; z-index: 1000;
+      background: var(--gold); color: #0A0A0F; padding: 10px 16px; text-decoration: none;
+      font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .skip-link:focus { left: 8px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     .foundation-hero {
       min-height: 78vh;
@@ -505,18 +514,23 @@
 
     /* nav dots */
     .cf-dots {
-      display: flex; justify-content: center; gap: 10px;
-      margin-top: 32px;
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 24px;
     }
 
+    /* Each dot is a 24px button (WCAG 2.5.8) drawing an 8px dot. */
     .cf-dot {
-      width: 8px; height: 8px; border-radius: 50%;
+      width: 24px; height: 24px; padding: 0; border: 0; background: transparent;
+      display: grid; place-items: center; cursor: pointer; appearance: none; -webkit-appearance: none;
+    }
+    .cf-dot::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
       background: rgba(212,168,67,0.25);
       border: 1px solid rgba(212,168,67,0.4);
-      cursor: pointer; transition: all 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .cf-dot.active { background: var(--gold); transform: scale(1.3); }
+    .cf-dot.active::before { background: var(--gold); transform: scale(1.3); }
 
     /* nav arrows */
     .cf-arrows {
@@ -524,7 +538,7 @@
     }
 
     .cf-arrow {
-      width: 44px; height: 44px;
+      width: 44px; height: 44px; padding: 0; font-family: inherit; appearance: none; -webkit-appearance: none;
       border: 1px solid rgba(212,168,67,0.3);
       background: rgba(10,10,15,0.6);
       color: var(--gold); font-size: 18px;
@@ -662,6 +676,15 @@
     .water-column .f-section.dark, .water-column .f-section.deep, .water-column .programs-section { background: transparent; }
     .water-column .programs-bg { display: none; }
     .water-column .f-tag, .water-column h2, .water-column .f-section > .f-wrap > p { text-shadow: 0 2px 14px rgba(0,0,0,0.6); }
+    /* The lower half of the column is bright: darken the top of the two sections that sit on it. */
+    .water-column .programs-section::before, .water-column #faq::before {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 62%; pointer-events: none;
+      background: linear-gradient(180deg, rgba(10,10,15,0.62) 0%, rgba(10,10,15,0.38) 45%, rgba(10,10,15,0) 100%);
+    }
+    .water-column .programs-content > p { color: #e6ecf3; text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 2px 14px rgba(0,0,0,0.7); }
+    .water-column .programs-content > .f-tag, .water-column #faq .f-tag {
+      background: rgba(10,10,15,0.74); padding: 6px 12px 6px 10px; width: max-content; max-width: 100%;
+    }
 
     /* The diver rides above the videos and scrims (z 0/1) and below the copy (.f-wrap is z 5). */
     .dive-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
@@ -766,7 +789,8 @@
     /* ── FOOTER ── */
     .foundation-footer {
       border-top: 1px solid var(--fund-border); background: var(--fund-deep);
-      padding: 32px 48px;
+      /* Extra bottom room so the fixed Pause motion control never sits over the legal links. */
+      padding: 32px 48px 88px;
     }
     .footer-wrap {
       max-width: 1100px; margin: 0 auto;
@@ -801,7 +825,7 @@
       color: var(--fog); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;
     }
     .footer-legal a:hover { color: var(--gold); border-color: var(--gold); }
-    .footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: rgba(138,155,181,0.6); margin: 0; }
+    .footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: var(--fog); margin: 0; }
 
     @media (max-width: 1024px) {
       .origin-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; }
@@ -866,8 +890,12 @@
       }
       .donate-fab { right: 16px; }
       .donate-fab-qr { display: none; }
-      .foundation-footer { padding: 32px 24px; }
+      .foundation-footer { padding: 32px 24px 88px; }
       .footer-wrap, .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 420px) {
+      .pillars-grid { grid-template-columns: 1fr; }
     }
   </style>
   <!-- Loaded after the page styles so its cursor rules win over the pointer rules above. -->
@@ -876,8 +904,9 @@
 <body>
 
 <div class="foundation-page">
+  <a class="skip-link" href="#diveScope">Skip to content</a>
 
-  <div class="dive-scope" id="diveScope">
+  <main class="dive-scope" id="diveScope" tabindex="-1">
   <div class="dive-layer" id="diveLayer" aria-hidden="true"><div class="dive-diver" id="diver"><img id="diverImg" alt="" src="diver/diver_00.webp" decoding="async"></div></div>
 
   <!-- HERO -->
@@ -1040,7 +1069,7 @@
       <h2 class="reveal reveal-delay-1">WHERE YOUR<br><em>SUPPORT GOES</em></h2>
       <p class="reveal reveal-delay-2" style="max-width:680px;">Every program is built around the healing power of water. From therapeutic dives to certified training pathways, we meet heroes where they are and help them move forward.</p>
 
-      <div class="coverflow-stage" id="cfStage">
+      <div class="coverflow-stage" id="cfStage" role="region" aria-roledescription="carousel" aria-label="Core programs">
         <div class="cf-track" id="cfTrack">
           <div class="cf-card" data-index="0">
             <span class="program-icon">🤿</span>
@@ -1085,10 +1114,11 @@
       </div>
 
       <div class="cf-arrows">
-        <div class="cf-arrow" id="cfPrev">&#8592;</div>
-        <div class="cf-arrow" id="cfNext">&#8594;</div>
+        <button type="button" class="cf-arrow" id="cfPrev" aria-label="Previous program">&#8592;</button>
+        <button type="button" class="cf-arrow" id="cfNext" aria-label="Next program">&#8594;</button>
       </div>
       <div class="cf-dots" id="cfDots"></div>
+      <p class="sr-only" id="cfStatus" aria-live="polite"></p>
     </div>
   </section>
 
@@ -1187,7 +1217,7 @@
     </div>
   </section>
 
-  </div><!-- /dive-scope -->
+  </main><!-- /dive-scope -->
 
   <!-- CTA: hidden for now (Oct 2026), it repeated the Donate and Origin Story calls above. To restore, delete this comment opener and the matching closer after </section>.
   <section class="foundation-cta">
@@ -1236,6 +1266,7 @@
   <a href="https://link.clover.com/urlshortener/wZVcKj" class="donate-fab-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Donate Now</a>
 </div>
 
+<script src="/motion.js"></script>
 <script>
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
@@ -1251,10 +1282,18 @@
     let active = 0;
     let autoTimer;
 
-    // Build dots
-    cards.forEach((_, i) => {
-      const d = document.createElement('div');
+    const status = document.getElementById('cfStatus');
+    const titleOf = (card) => (card.querySelector('h3') || card).textContent.trim();
+    // Slides and dots carry labels for screen readers; the dots are real buttons.
+    cards.forEach((card, i) => {
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-roledescription', 'slide');
+      card.setAttribute('aria-label', `${i + 1} of ${total}`);
+      const d = document.createElement('button');
+      d.type = 'button';
       d.className = 'cf-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Show program ${i + 1} of ${total}: ${titleOf(card)}`);
+      if (i === 0) d.setAttribute('aria-current', 'true');
       d.addEventListener('click', () => goTo(i));
       dotsContainer.appendChild(d);
     });
@@ -1289,7 +1328,11 @@
         card.style.pointerEvents = offset === 0 ? 'auto' : 'none';
       });
 
-      dots.forEach((d, i) => d.classList.toggle('active', i === active));
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === active);
+        if (i === active) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+      if (status) status.textContent = `Program ${active + 1} of ${total}: ${titleOf(cards[active])}`;
     }
 
     function goTo(idx) {
@@ -1301,10 +1344,19 @@
     function next() { goTo(active + 1); }
     function prev() { goTo(active - 1); }
 
+    // Auto-advance stops while motion is paused (the Pause motion control) and while a keyboard user
+    // is inside the carousel; the hover pause below covers mouse users.
+    let focusInside = false;
+    function motionPaused() { return document.documentElement.classList.contains('motion-paused'); }
     function resetAuto() {
       clearInterval(autoTimer);
+      if (motionPaused() || focusInside) return;
       autoTimer = setInterval(next, 7000);
     }
+    document.documentElement.addEventListener('motionchange', resetAuto);
+    const programs = document.querySelector('.programs-content');
+    programs.addEventListener('focusin', () => { focusInside = true; clearInterval(autoTimer); });
+    programs.addEventListener('focusout', (e) => { if (!programs.contains(e.relatedTarget)) { focusInside = false; resetAuto(); } });
 
     document.getElementById('cfNext').addEventListener('click', next);
     document.getElementById('cfPrev').addEventListener('click', prev);
@@ -1333,18 +1385,20 @@
     const qrBtn = document.getElementById('donateFabQrBtn');
     const pop = document.getElementById('donateFabPop');
     if (!fab || !donateSection) return;
-    let donateInView = false;
+    let donateInView = false, footerInView = false;
+    const footer = document.querySelector('.foundation-footer');
 
     function closePop() { pop.hidden = true; qrBtn.setAttribute('aria-expanded', 'false'); }
     function update() {
-      const show = window.scrollY > 420 && !donateInView;
+      const show = window.scrollY > 420 && !donateInView && !footerInView;
       fab.classList.toggle('show', show);
       if (!show) closePop();
     }
     new IntersectionObserver(entries => {
-      entries.forEach(e => { donateInView = e.isIntersecting; });
+      entries.forEach(e => { if (e.target === donateSection) donateInView = e.isIntersecting; else footerInView = e.isIntersecting; });
       update();
     }, { threshold: 0.15 }).observe(donateSection);
+    if (footer) new IntersectionObserver(entries => { entries.forEach(e => { footerInView = e.isIntersecting; }); update(); }, { threshold: 0.05 }).observe(footer);
     window.addEventListener('scroll', update, { passive: true });
     update();
 
@@ -1444,7 +1498,7 @@
     if (screenY > -dh && screenY < vh + dh) {
       // Scroll drives the kick; at rest it idles slowly. Head-up plays in reverse so the bubbles rise.
       var dir = Math.cos(rot * Math.PI / 180) < 0 ? -1 : 1;
-      f += dir * (Math.abs(vel) > 0.5 ? Math.min(2.2, Math.abs(vel) * 0.12) : dt / 1000 * 10);
+      if (!document.documentElement.classList.contains('motion-paused')) f += dir * (Math.abs(vel) > 0.5 ? Math.min(2.2, Math.abs(vel) * 0.12) : dt / 1000 * 10);
       var idx = ((Math.round(f) % N) + N) % N, fr = frames[idx];
       if (idx !== shown && fr && fr.complete && fr.naturalWidth) { img.src = fr.src; shown = idx; }
     }

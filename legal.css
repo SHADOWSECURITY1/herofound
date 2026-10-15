@@ -30,6 +30,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
   font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
 }
 .skip-link:focus { left: 8px; }
+html { scroll-padding-bottom: 96px; }
 
 /* >>> synced from index.html by tools/sync_legal_css.py; do not edit by hand */
 /* Class names are the same as on the home page so these rules apply unchanged. */
@@ -179,7 +180,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 }
 
 /* Footer: keep identical to the footer in index.html */
-.foundation-footer { border-top: 1px solid var(--fund-border); background: var(--fund-deep); padding: 32px 48px; }
+.foundation-footer { border-top: 1px solid var(--fund-border); background: var(--fund-deep); padding: 32px 48px 88px; }
 .footer-wrap {
   max-width: 1100px; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
@@ -213,7 +214,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
   color: var(--fog); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;
 }
 .footer-legal a:hover, .footer-legal a[aria-current="page"] { color: var(--gold); border-color: var(--gold); }
-.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: rgba(138,155,181,0.6); margin: 0; }
+.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: var(--fog); margin: 0; }
 
 /* Phone overrides, mirroring the home page's 768px rules for the same blocks. */
 @media (max-width: 768px) {
@@ -243,7 +244,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     background:
       linear-gradient(180deg, rgba(10,10,15,0.08) 0%, rgba(10,10,15,0.05) 50%, rgba(10,10,15,0.50) 100%);
   }
-  .foundation-footer { padding: 32px 24px; }
+  .foundation-footer { padding: 32px 24px 88px; }
   .footer-wrap, .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 

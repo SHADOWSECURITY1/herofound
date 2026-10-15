@@ -18,7 +18,7 @@ Contact: info@herofound.org. Donate: https://link.clover.com/urlshortener/wZVcKj
 ## Pages
 - [Home](https://herofound.org/): mission, origin story, programs, ways to help, donate.
 - [FAQ](https://herofound.org/#faq): what HERO stands for, who can take part, tax-deductibility, how to donate, volunteer, or partner.
-- [Accessibility Statement](https://herofound.org/accessibility): WCAG 2.1 AA target, reduced-motion support, how to report a barrier.
+- [Accessibility Statement](https://herofound.org/accessibility): WCAG 2.2 AA target, Pause motion control, keyboard-operable carousel, how to report a barrier.
 - [Privacy Policy](https://herofound.org/privacy-policy): no accounts, cookies, or trackers; hosting logs and Google Fonts; donations processed by Clover; contact for access or deletion.
 - [Terms of Service](https://herofound.org/terms-of-service): informational site, not medical or dive-safety advice; donations; trademarks; Nevada governing law.
 
