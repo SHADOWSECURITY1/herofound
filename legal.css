@@ -215,6 +215,9 @@ html { scroll-padding-bottom: 96px; }
 }
 .footer-legal a:hover, .footer-legal a[aria-current="page"] { color: var(--gold); border-color: var(--gold); }
 .footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: var(--fog); margin: 0; }
+.footer-meta { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; }
+.footer-badge { display: inline-flex; flex: none; line-height: 0; border-radius: 5px; }
+.footer-badge img { display: block; width: 149px; height: 32px; }
 
 /* Phone overrides, mirroring the home page's 768px rules for the same blocks. */
 @media (max-width: 768px) {
